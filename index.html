@@ -1273,7 +1273,6 @@ updateOverlayFilter();
       </div>
     </div>
   `;
-Ы
 } else if (iconClass === 'kr') {
       iconUrl = 'kalibr.png';
       iconClass = 'red-id';
@@ -1393,6 +1392,7 @@ const randomNumber = Math.floor(Math.random() * 200) + 1;
 }
 let iconCreated = false;
 
+// === Создание маркера ===
 const marker = L.marker([lat, lng], { icon }).addTo(map);
 
 setInterval(() => {
@@ -1524,133 +1524,142 @@ if (document.readyState === "loading") {
     initTrailButton(marker);
 }
 
+// ==== Верхнее меню ====
 function createTopMenu(marker) {
-        // ←←← добавляем этот блок
-    if (typeof deleteMode !== 'undefined' && deleteMode) {
-        return; // в режиме удаления меню вообще не показываем
-    }
-    // если меню для этого объекта уже есть — выходим
+    if (typeof deleteMode !== 'undefined' && deleteMode) return;
     if (document.getElementById('top-menu-' + objectId)) return;
 
     const menu = document.createElement('div');
     menu.id = 'top-menu-' + objectId;
 
-// считаем, сколько уже есть панелей
-const existingMenus = document.querySelectorAll('[id^="top-menu-"]').length;
-// отступ для новой панели (уменьшил зазор)
-const offset = 18 + existingMenus * 36; // (15 * 1.2, 30 * 1.2)
+    const existingMenus = document.querySelectorAll('[id^="top-menu-"]').length;
+    const offset = 18 + existingMenus * 36;
 
-Object.assign(menu.style, {
-    position: 'fixed',
-    top: offset + 'px',
-    left: '0',
-    width: '100%',
-    height: '36px', // 30 * 1.2
-    background: 'rgba(0, 0, 0, 0.4)',
-    color: '#fff',
-    fontFamily: 'Consolas, monospace',
-    fontSize: '15.6px', // 13 * 1.2
-    zIndex: '9999',
-    borderBottom: '1px solid rgba(255,255,255,0.15)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0 9.6px', // 8 * 1.2
-    boxShadow: 'none',
-    transition: 'none'
-});
+    Object.assign(menu.style, {
+        position: 'fixed',
+        top: offset + 'px',
+        left: '0',
+        width: '100%',
+        height: '36px',
+        background: 'rgba(0, 0, 0, 0.4)',
+        color: '#fff',
+        fontFamily: 'Consolas, monospace',
+        fontSize: '15.6px',
+        zIndex: '9999',
+        borderBottom: '1px solid rgba(255,255,255,0.15)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 9.6px',
+        boxShadow: 'none',
+        transition: 'none'
+    });
 
-// === Текст ===
-const row = document.createElement('div');
-Object.assign(row.style, {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(6, 1fr)',
-    alignItems: 'center',
-    width: 'calc(100% - 144px)', // 120 * 1.2
-    textAlign: 'center',
-    letterSpacing: '0.36px', // 0.3 * 1.2
-    columnGap: '14.4px', // 12 * 1.2
-    paddingRight: '144px' // 120 * 1.2
-});
+    const row = document.createElement('div');
+    Object.assign(row.style, {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(6, 1fr)',
+        alignItems: 'center',
+        width: 'calc(100% - 144px)',
+        textAlign: 'center',
+        letterSpacing: '0.36px',
+        columnGap: '14.4px',
+        paddingRight: '144px'
+    });
 
-row.innerHTML = `
-    <div>${objectId}р</div>
-    <div>A0</div>
-    <div>D0</div>
-    <div>H0.0</div>
-    <div>V${speed}</div>
-    <div>1</div>
-`;
+    row.innerHTML = `
+        <div>${objectId}р</div>
+        <div>A0</div>
+        <div>D0</div>
+        <div>H0.0</div>
+        <div>V${speed}</div>
+        <div>1</div>
+    `;
 
-// === Кнопки ===
-const icons = document.createElement('div');
-Object.assign(icons.style, {
-    position: 'absolute',
-    right: '9.6px', // 8 * 1.2
-    display: 'flex',
-    gap: '14.4px' // 12 * 1.2
-});
+    const icons = document.createElement('div');
+    Object.assign(icons.style, {
+        position: 'absolute',
+        right: '9.6px',
+        display: 'flex',
+        gap: '14.4px'
+    });
 
-icons.innerHTML = `
-    <button id="changeCoordsBtn-${objectId}" title="Изменить маршрут" style="
-        width:26.4px;height:26.4px; /* 22 * 1.2 */
-        border:1px solid rgba(255,255,255,0.25);
-        background:#fff;
-        border-radius:2.4px; /* 2 * 1.2 */
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:0;
-    ">
-        <img src="reload.png" alt="reload" style="width:16.8px;height:16.8px;"> <!-- 14 * 1.2 -->
-    </button>
+    icons.innerHTML = `
+        <button id="changeCoordsBtn-${objectId}" title="Изменить маршрут" style="
+            width:26.4px;height:26.4px;
+            border:1px solid rgba(255,255,255,0.25);
+            background:#fff;
+            border-radius:2.4px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:0;
+        ">
+            <img src="reload.png" alt="reload" style="width:16.8px;height:16.8px;">
+        </button>
 
-    <button id="zelenySamBtn-${objectId}" title="Самолёт" style="
-        width:26.4px;height:26.4px;
-        border:1px solid rgba(255,255,255,0.25);
-        background:#fff;
-        border-radius:2.4px;
-        cursor:default;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:0;
-    ">
-        <img src="zelenysam.png" alt="plane" style="width:18px;height:18px;"> <!-- 15 * 1.2 -->
-    </button>
+        <button id="zelenySamBtn-${objectId}" title="Самолёт" style="
+            width:26.4px;height:26.4px;
+            border:1px solid rgba(255,255,255,0.25);
+            background:#fff;
+            border-radius:2.4px;
+            cursor:default;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:0;
+        ">
+            <img src="zelenysam.png" alt="plane" style="width:18px;height:18px;">
+        </button>
 
-    <button id="closeTopMenu-${objectId}" title="Закрыть" style="
-        width:26.4px;height:26.4px;
-        border:1px solid rgba(255,255,255,0.25);
-        background:#fff;
-        border-radius:2.4px;
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:0;
-        font-size:14.4px; /* 12 * 1.2 */
-        color:#222;
-    ">
-        <i class="fas fa-trash-alt"></i>
-    </button>
-`;
-
+        <button id="closeTopMenu-${objectId}" title="Закрыть" style="
+            width:26.4px;height:26.4px;
+            border:1px solid rgba(255,255,255,0.25);
+            background:#fff;
+            border-radius:2.4px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:0;
+            font-size:14.4px;
+            color:#222;
+        ">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    `;
 
     menu.appendChild(row);
     menu.appendChild(icons);
     document.body.appendChild(menu);
 
-    // === Обработчики ===
+    // обновлено — линия теперь исчезает при закрытии меню
     document.getElementById(`closeTopMenu-${objectId}`).onclick = () => {
         menu.remove();
-        // пересчёт отступов при закрытии
-        const allMenus = document.querySelectorAll('[id^="top-menu-"]');
-        allMenus.forEach((m, i) => {
-            m.style.top = 15 + i * 30 + 'px';
-        });
-    };
+    // если есть линия направления — удалить
+    if (headingLine) {
+        map.removeLayer(headingLine);
+        headingLine = null;
+    }
+
+    // 🔥 если иконка была изменена — вернуть исходную
+    if (marker.isExpanded) {
+        marker.setIcon(L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        }));
+        marker.isExpanded = false;
+    }
+
+    // обновить позиции остальных меню
+    const allMenus = document.querySelectorAll('[id^="top-menu-"]');
+    allMenus.forEach((m, i) => {
+        m.style.top = 18 + i * 36 + 'px';
+    });
+};
 
     document.getElementById(`changeCoordsBtn-${objectId}`).onclick = () => {
         openCoordsModal((coordsText) => {
@@ -1678,8 +1687,37 @@ icons.innerHTML = `
 }
 
 // ==== Клик по маркеру ====
-marker.on('click', () => createTopMenu(marker));
+// Добавляем функционал линии направления
+let headingLine = null;
+marker.on('click', () => {
+    createTopMenu(marker);
 
+    if (headingLine) {
+        map.removeLayer(headingLine);
+        headingLine = null;
+        return;
+    }
+
+    headingLine = L.polyline([], {
+        color: '#999999', // серая
+        weight: 0.8,      // тоньше
+        opacity: 0.9
+    }).addTo(map);
+});
+
+// ==== Функция обновления линии направления ====
+function updateHeadingLine(angleDeg) {
+    if (!headingLine) return;
+    const pos = marker.getLatLng();
+    const angleRad = angleDeg * Math.PI / 180;
+    const lengthMeters = 1000000; // 1000 км
+    const R = 6371000;
+
+    const lat2 = pos.lat + (lengthMeters / R) * (180 / Math.PI) * Math.cos(angleRad);
+    const lng2 = pos.lng + (lengthMeters / R) * (180 / Math.PI) * Math.sin(angleRad) / Math.cos(pos.lat * Math.PI / 180);
+
+    headingLine.setLatLngs([[pos.lat, pos.lng], [lat2, lng2]]);
+}
 
 // ==== Вращение и движение ====
 function rotateIcon(lat1, lng1, lat2, lng2, speed) {
@@ -1690,6 +1728,7 @@ function rotateIcon(lat1, lng1, lat2, lng2, speed) {
     const course = calculateCourse(lat1, lng1, lat2, lng2) * (180 / Math.PI);
     const angle = (course + 360) % 360;
     marker._icon.querySelector('.icon').style.transform = `rotate(${angle}deg)`;
+    updateHeadingLine(angle);
 }
 
 markers.push(marker);
@@ -1721,6 +1760,7 @@ function updatePosition(timestamp) {
         } else {
             isActive = false;
             marker.remove();
+            if (headingLine) map.removeLayer(headingLine);
         }
     } else {
         currentLat = newLat;
