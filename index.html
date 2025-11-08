@@ -1710,7 +1710,7 @@ function updateHeadingLine(angleDeg) {
     if (!headingLine) return;
     const pos = marker.getLatLng();
     const angleRad = angleDeg * Math.PI / 180;
-    const lengthMeters = 1000000; // 1000 км
+    const lengthMeters = 2000000; // 1000 км
     const R = 6371000;
 
     const lat2 = pos.lat + (lengthMeters / R) * (180 / Math.PI) * Math.cos(angleRad);
