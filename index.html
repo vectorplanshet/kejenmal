@@ -1943,8 +1943,6 @@ function getRlsForObject(objectId, iconUrl) {
     return rlsOptions[randomIndex];
 }
 
-let touchTimer;
-
 map.on('contextmenu', function (e) {
     const coords = `${e.latlng.lat}, ${e.latlng.lng}`;
     navigator.clipboard.writeText(coords).then(() => {
@@ -1955,22 +1953,23 @@ map.on('contextmenu', function (e) {
 });
 
 map.on('touchstart', function (e) {
-    // Берём координаты точки касания
-    const latlng = map.mouseEventToLatLng(e.originalEvent.touches[0]);
+    const touches = e.originalEvent.touches;
 
-    // Запускаем таймер, чтобы определить долгий тап
-    touchTimer = setTimeout(() => {
+    // Проверяем, что нажато ДВА пальца
+    if (touches.length === 2) {
+        // Берём среднюю точку между пальцами
+        const x = (touches[0].clientX + touches[1].clientX) / 2;
+        const y = (touches[0].clientY + touches[1].clientY) / 2;
+
+        const latlng = map.mouseEventToLatLng({ clientX: x, clientY: y });
         const coords = `${latlng.lat}, ${latlng.lng}`;
+
         navigator.clipboard.writeText(coords).then(() => {
             alert(`Координаты скопированы: ${coords}`);
         }).catch(err => {
             console.error('Ошибка копирования координат:', err);
         });
-    }, 800); // 0.8 секунды удержания
-});
-
-map.on('touchend', function () {
-    clearTimeout(touchTimer);
+    }
 });
 
 fetch("front.json")
