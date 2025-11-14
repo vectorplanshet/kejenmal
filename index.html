@@ -1069,15 +1069,20 @@ updateOverlayFilter();
             }
         }
 
-        map.on('click', (e) => {
-            if (deleteMode) return;
+function handleMapClick(e) {
+    if (deleteMode) return;
 
-            const { lat, lng } = e.latlng;
+    const { lat, lng } = e.latlng;
 
-            // Get speed input via modal
-            showSpeedModal((speed) => {
-                // Get target input via modal
-                showTargetModal((targetLat, targetLng) => {
+    showSpeedModal((speed) => {
+        showTargetModal((targetLat, targetLng) => {
+            // твой код создания объекта
+        });
+    });
+}
+
+map.on('click', handleMapClick);
+
 
             const objectId = generateId();
             let iconUrl;
@@ -1450,7 +1455,6 @@ const translations = {
 let objectKey = iconUrl.replace('.png', '').replace(/-/g, ' ');
 let objectType = translations[objectKey] || objectKey;
 objectType = objectType.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-
 let currentLat = lat;
 let currentLng = lng;
 let targetLatVar = targetLat;
@@ -1467,6 +1471,11 @@ let trailCoords = [[currentLat, currentLng]];
 let trailLine = null;
 let startMarker = null;
 let trailDecorator = null;
+
+// ==== ИЗМЕРЕНИЕ ====
+let measureMode = false;
+let measureLine = null;
+let measureClickHandler = null;
 
 // ==== Цвет линии ====
 function getLineColor(marker) {
@@ -1524,8 +1533,45 @@ if (document.readyState === "loading") {
     initTrailButton(marker);
 }
 
+
+// ==== Вспомогательные для измерения ====
+function calculateAzimuth(lat1, lon1, lat2, lon2) {
+    const toRad = x => x * Math.PI / 180;
+    const toDeg = x => x * 180 / Math.PI;
+
+    const dLon = toRad(lon2 - lon1);
+
+    const y = Math.sin(dLon) * Math.cos(toRad(lat2));
+    const x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+              Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(dLon);
+
+    return (toDeg(Math.atan2(y, x)) + 360) % 360;
+}
+
+function formatTime(minutes) {
+    const h = Math.floor(minutes / 60);
+    const m = Math.round(minutes % 60);
+    return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+function stopMeasure() {
+    measureMode = false;
+    map._container.style.cursor = "default";
+
+    if (measureClickHandler) {
+        map.off("click", measureClickHandler);
+        measureClickHandler = null;
+    }
+    if (measureLine) {
+        map.removeLayer(measureLine);
+        measureLine = null;
+    }
+}
+
+
 // ==== Верхнее меню ====
 function createTopMenu(marker) {
+
     if (typeof deleteMode !== 'undefined' && deleteMode) return;
     if (document.getElementById('top-menu-' + objectId)) return;
 
@@ -1576,6 +1622,18 @@ function createTopMenu(marker) {
         <div>1</div>
     `;
 
+    const resultBox = document.createElement("div");
+    resultBox.id = `measure-${objectId}`;
+    Object.assign(resultBox.style, {
+        position: "absolute",
+        bottom: "-17px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        color: "#fff",
+        fontSize: "13px",
+        textShadow: "0 0 3px #000"
+    });
+
     const icons = document.createElement('div');
     Object.assign(icons.style, {
         position: 'absolute',
@@ -1584,83 +1642,66 @@ function createTopMenu(marker) {
         gap: '14.4px'
     });
 
+    // === 3 кнопки ===
     icons.innerHTML = `
         <button id="changeCoordsBtn-${objectId}" title="Изменить маршрут" style="
             width:26.4px;height:26.4px;
             border:1px solid rgba(255,255,255,0.25);
-            background:#fff;
-            border-radius:2.4px;
-            cursor:pointer;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:0;
-        ">
-            <img src="reload.png" alt="reload" style="width:16.8px;height:16.8px;">
+            background:#fff;border-radius:2.4px;cursor:pointer;display:flex;
+            align-items:center;justify-content:center;padding:0;">
+            <img src="reload.png" style="width:16.8px;height:16.8px;">
         </button>
 
         <button id="zelenySamBtn-${objectId}" title="Самолёт" style="
             width:26.4px;height:26.4px;
             border:1px solid rgba(255,255,255,0.25);
-            background:#fff;
-            border-radius:2.4px;
-            cursor:default;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:0;
-        ">
-            <img src="zelenysam.png" alt="plane" style="width:18px;height:18px;">
+            background:#fff;border-radius:2.4px;cursor:pointer;display:flex;
+            align-items:center;justify-content:center;padding:0;">
+            <img src="zelenysam.png" style="width:18px;height:18px;">
         </button>
 
         <button id="closeTopMenu-${objectId}" title="Закрыть" style="
             width:26.4px;height:26.4px;
             border:1px solid rgba(255,255,255,0.25);
-            background:#fff;
-            border-radius:2.4px;
-            cursor:pointer;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:0;
-            font-size:14.4px;
-            color:#222;
-        ">
+            background:#fff;border-radius:2.4px;cursor:pointer;display:flex;
+            align-items:center;justify-content:center;padding:0;font-size:14.4px;">
             <i class="fas fa-trash-alt"></i>
         </button>
     `;
 
     menu.appendChild(row);
     menu.appendChild(icons);
+    menu.appendChild(resultBox);
     document.body.appendChild(menu);
-
-    // обновлено — линия теперь исчезает при закрытии меню
+    // === Закрытие меню ===
     document.getElementById(`closeTopMenu-${objectId}`).onclick = () => {
+        stopMeasure(); // очистка измерителя
+
         menu.remove();
-    // если есть линия направления — удалить
-    if (headingLine) {
-        map.removeLayer(headingLine);
-        headingLine = null;
-    }
 
-    // 🔥 если иконка была изменена — вернуть исходную
-    if (marker.isExpanded) {
-        marker.setIcon(L.divIcon({
-            className: 'icon',
-            html: iconHtml,
-            iconSize: [28.8, 28.8],
-            iconAnchor: [14.4, 14.4],
-        }));
-        marker.isExpanded = false;
-    }
+        if (headingLine) {
+            map.removeLayer(headingLine);
+            headingLine = null;
+        }
 
-    // обновить позиции остальных меню
-    const allMenus = document.querySelectorAll('[id^="top-menu-"]');
-    allMenus.forEach((m, i) => {
-        m.style.top = 18 + i * 36 + 'px';
-    });
-};
+        if (marker.isExpanded) {
+            marker.setIcon(L.divIcon({
+                className: 'icon',
+                html: iconHtml,
+                iconSize: [28.8, 28.8],
+                iconAnchor: [14.4, 14.4],
+            }));
+            marker.isExpanded = false;
+        }
 
+        const allMenus = document.querySelectorAll('[id^="top-menu-"]');
+        allMenus.forEach((m, i) => {
+            m.style.top = 18 + i * 36 + 'px';
+        });
+    };
+
+
+    // === Кнопка изменения маршрута ===
     document.getElementById(`changeCoordsBtn-${objectId}`).onclick = () => {
         openCoordsModal((coordsText) => {
             if (!coordsText) return;
@@ -1668,15 +1709,19 @@ function createTopMenu(marker) {
                 .split("\n")
                 .map(line => line.split(",").map(Number))
                 .filter(c => !isNaN(c[0]) && !isNaN(c[1]));
+
             if (coordsList.length > 0) {
                 const pos = marker.getLatLng();
                 currentLat = pos.lat;
                 currentLng = pos.lng;
+
                 waypoints = [[currentLat, currentLng], ...coordsList];
                 currentWaypointIndex = 1;
                 targetLatVar = waypoints[1][0];
                 targetLngVar = waypoints[1][1];
+
                 lastTimestamp = null;
+
                 if (!isActive) {
                     isActive = true;
                     scheduleNextFrame(updatePosition);
@@ -1684,10 +1729,53 @@ function createTopMenu(marker) {
             }
         });
     };
+
+
+    // === ЗЕЛЁНЫЙ САМОЛЁТИК — ВКЛЮЧЕНИЕ ИЗМЕРЕНИЯ ===
+    document.getElementById(`zelenySamBtn-${objectId}`).onclick = () => {
+        stopMeasure(); // на всякий случай очистка старого
+
+        measureMode = true;
+        map._container.style.cursor = "crosshair";
+
+        const markerPos = marker.getLatLng();
+        const resultBox = document.getElementById(`measure-${objectId}`);
+
+        // обработчик клика
+        measureClickHandler = function(e) {
+            if (!measureMode) return;
+
+            const { lat, lng } = e.latlng;
+
+            // === Рисуем прямую линию ===
+            if (measureLine) map.removeLayer(measureLine);
+            measureLine = L.polyline([[markerPos.lat, markerPos.lng], [lat, lng]], {
+                color: "#00ff00",
+                weight: 1.5,
+                opacity: 0.9
+            }).addTo(map);
+
+            // === Вычисления ===
+            const dist = haversine(markerPos.lat, markerPos.lng, lat, lng) / 1000; // км
+            const az = calculateAzimuth(markerPos.lat, markerPos.lng, lat, lng);
+
+            const speedMps = speed * 1000 / 3600;
+            const minutes = (dist * 1000) / speedMps / 60;
+
+            const timeText = formatTime(minutes);
+
+            resultBox.textContent = `${az.toFixed(0)}° / ${dist.toFixed(1)} км — ${timeText}`;
+
+            // === Отключаем режим ===
+            stopMeasure();
+        };
+
+        map.on("click", measureClickHandler);
+    };
 }
 
-// ==== Клик по маркеру ====
-// Добавляем функционал линии направления
+
+// ==== КЛИК ПО МАРКЕРУ (твоя логика сохранена) ====
 let headingLine = null;
 marker.on('click', () => {
     createTopMenu(marker);
@@ -1699,18 +1787,19 @@ marker.on('click', () => {
     }
 
     headingLine = L.polyline([], {
-        color: '#999999', // серая
-        weight: 0.8,      // тоньше
+        color: '#999999',
+        weight: 0.8,
         opacity: 0.9
     }).addTo(map);
 });
 
-// ==== Функция обновления линии направления ====
+
+// ==== Обновление линии направления ====
 function updateHeadingLine(angleDeg) {
     if (!headingLine) return;
     const pos = marker.getLatLng();
     const angleRad = angleDeg * Math.PI / 180;
-    const lengthMeters = 2000000; // 1000 км
+    const lengthMeters = 2000000;
     const R = 6371000;
 
     const lat2 = pos.lat + (lengthMeters / R) * (180 / Math.PI) * Math.cos(angleRad);
@@ -1718,6 +1807,7 @@ function updateHeadingLine(angleDeg) {
 
     headingLine.setLatLngs([[pos.lat, pos.lng], [lat2, lng2]]);
 }
+
 
 // ==== Вращение и движение ====
 function rotateIcon(lat1, lng1, lat2, lng2, speed) {
@@ -1733,9 +1823,13 @@ function rotateIcon(lat1, lng1, lat2, lng2, speed) {
 
 markers.push(marker);
 
+
+// ==== Движок ====
 function scheduleNextFrame(callback) {
     if (document.hasFocus()) requestAnimationFrame(callback);
-    else setTimeout(() => { if (isActive) callback(performance.now()); }, 1000);
+    else setTimeout(() => {
+        if (isActive) callback(performance.now());
+    }, 1000);
 }
 
 function updatePosition(timestamp) {
@@ -1744,6 +1838,7 @@ function updatePosition(timestamp) {
     lastTimestamp = timestamp;
 
     const speedMps = speed * 1000 / 3600;
+
     let [newLat, newLng] = calculateNewPosition(currentLat, currentLng, speedMps, deltaTime, targetLatVar, targetLngVar);
 
     const distance = haversine(currentLat, currentLng, targetLatVar, targetLngVar);
@@ -1753,6 +1848,7 @@ function updatePosition(timestamp) {
         currentLat = targetLatVar;
         currentLng = targetLngVar;
         currentWaypointIndex++;
+
         if (currentWaypointIndex < waypoints.length) {
             targetLatVar = waypoints[currentWaypointIndex][0];
             targetLngVar = waypoints[currentWaypointIndex][1];
@@ -1777,11 +1873,13 @@ function updatePosition(timestamp) {
     }
 }
 
-// ==== Инициализация маршрута ====
+
+// ==== Старт маршрута ====
 waypoints.push([targetLat, targetLng]);
 currentWaypointIndex = 0;
 lastTimestamp = null;
 scheduleNextFrame(updatePosition);
+
 
 // ==== Вспомогательные ====
 function haversine(lat1, lon1, lat2, lon2) {
@@ -1814,8 +1912,6 @@ function calculateNewPosition(lat1, lon1, speedMps, deltaTime, lat2, lon2) {
         lon1 + (lon2 - lon1) * fraction
     ];
 }
-
-// ==== Модалка координат ====
 function openCoordsModal(callback) {
     const background = document.createElement('div');
     background.className = 'modal-background show';
@@ -1913,8 +2009,7 @@ marker.on('click', function (e) {
 
     // если не deleteMode — показываем меню
     createTopMenu(marker);
-
-},);});})});
+},)
     
 
 // ==== Кнопка deleteMode ====
@@ -2099,17 +2194,28 @@ function getNextLitakId() {
     setInterval(updateAlertCount, 500);
     updateAlertCount();
 
-      fetch('line.json')
-      .then(res => res.json())
-      .then(data => {
-        L.geoJSON(data, {
-          style: {
-            color: 'red',
-            weight: 1,
-            fill: false
-          }
-        }).addTo(map);
-      })
+fetch('line.json')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: {
+        color: 'red',
+        weight: 1.5
+      }
+    }).addTo(map);
+  });
+
+fetch('okkyp.json')
+  .then(res => res.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: {
+        stroke: false,        // 🔥 отключает контур
+        fillColor: '#e6a57a',
+        fillOpacity: 0.3      // прозрачность, подбери
+      }
+    }).addTo(map);
+  });
 
 </script>
 
