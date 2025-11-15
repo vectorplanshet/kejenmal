@@ -166,14 +166,14 @@ input[type="text"]:focus {
         /* Стили для текста в зависимости от цвета */
 .red-id .label-container,
 .red-id .r-container,
-.red-id .rls-container 
+.red-id .rls-container, 
 .red-id .icon-container {
     color: #dd0347;
 }
 
 .blue-id .label-container,
 .blue-id .r-container,
-.blue-id .rls-container 
+.blue-id .rls-container,
 .blue-id .icon-container {
     color: #2375D8; /* Синий цвет для текста */
 }
@@ -197,11 +197,34 @@ input[type="text"]:focus {
 .info-container1 {
     line-height: 11px; /* 7 * 1.6 */
 }
+.info-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    padding: 5 40px 5 40px; /* ← добавь px после 5 */
+    min-width: 75px;
+    height: 11px;
+    line-height: 0.8;
+
+    border-style: solid;
+    border-width: 1px;
+    border-top-color: rgba(0,0,0,0.95);
+    border-left-color: rgba(0,0,0,0.95);
+    border-right-color: rgba(0,0,0,0.95);
+    border-bottom-color: #dcdcdc;
+    box-sizing: border-box;
+
+    /* 👇 вот эти две магические строки */
+    contain: layout paint;
+    will-change: transform;
+}
+
 .label-container {
     font-size: 10.4px; /* 6.5 * 1.6 */
     font-weight: 800;
     font-family: 'Roboto', sans-serif;
-    -webkit-text-stroke-color: black;
 }
 
 .r-container {
@@ -234,7 +257,6 @@ input[type="text"]:focus {
     font-size: 10.4px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
-    -webkit-text-stroke-color: black;
     color: #333333;
 }
 
@@ -244,40 +266,6 @@ input[type="text"]:focus {
     font-family: 'Roboto', sans-serif;
     color: #333333;
 }
-/* контейнер с впуклой рамкой */
-.info-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 10px 0 10px;
-  font-size: 10.4px;
-  font-weight: 600;
-  font-family: 'Roboto', sans-serif;
-  color: #000;
-  background: transparent;
-
-  /* четыре стороны рамки; низ светлый для "впуклости" */
-  border: 1px solid #000;
-  border-bottom-color: #dcdcdc;
-}
-
-/* УДАЛИ эту штуку, если она у тебя была — она рисовала лишнюю горизонтальную палку слева */
-/*
-.info-container::before { display:none; content:""; }
-*/
-
-/* текстовые спаны внутри */
-.label-container,
-.r-container {
-  line-height: 1;
-  display: inline-block;
-}
-
-/* гарантированный зазор между 9500р и ПП· */
-.r-container { margin-left: 3px; }
-/* (если хочешь вместо margin — можно так)
-.label-container::after { content: "\00a0"; }
-*/
 
 #deleteButton {
     width: 29.6px;            /* 18.5 * 1.6 */
