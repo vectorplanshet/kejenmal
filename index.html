@@ -175,7 +175,7 @@ input[type="text"]:focus {
 .blue-id .r-container,
 .blue-id .rls-container,
 .blue-id .icon-container {
-    color: #2375D8; /* Синий цвет для текста */
+        color: #2375D8; /* Синий цвет для текста */
 }
       .shifted-id-x-101 {
     margin-left: 32px; /* 20 * 1.6 */
@@ -1315,6 +1315,7 @@ updateOverlayFilter();
         iconAnchor: [14.4, 14.4],
     });
 } else if (iconClass === 'vertolet') {
+          iconClass = 'blue-id';
   iconHtml = `
     <div class="icon-container ${iconClass}">
       <img src="${iconUrl}" class="icon" />
