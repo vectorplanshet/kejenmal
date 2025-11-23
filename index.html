@@ -1380,9 +1380,45 @@ const randomNumber = Math.floor(Math.random() * 200) + 1;
 }
 }
 let iconCreated = false;
+function addSpeedCircle(marker, speed) {
+    let color = null;
 
-// === Создание маркера ===
+    // Цвет круга по скорости
+    if (speed > 4000) {
+        color = "#ff6a00";       // ярко-оранжевый
+    } else if (speed >= 2000) {
+        color = "#ffea70";       // мягкий жёлтый
+    } else {
+        return null;             // <2000 → круга нет
+    }
+
+    const latlng = marker.getLatLng();
+
+    // CircleMarker = идеальный пиксельный круг под иконкой
+    const circle = L.circleMarker(latlng, {
+        radius: 18,
+        stroke: false,
+        fillColor: color,
+        fillOpacity: 0.65,
+    }).addTo(map);
+
+    // Круг следует за маркером при любом движении
+    marker.on("move", () => {
+        circle.setLatLng(marker.getLatLng());
+    });
+
+    return circle;
+}
+
 const marker = L.marker([lat, lng], { icon }).addTo(map);
+
+// если у маркера уже был круг — удаляем
+if (marker._speedCircle) {
+    map.removeLayer(marker._speedCircle);
+}
+
+marker._speedCircle = addSpeedCircle(marker, speed);
+
 
 setInterval(() => {
     const el = document.getElementById('warning-message');
@@ -1742,20 +1778,31 @@ function updatePosition(timestamp) {
     const distance = haversine(currentLat, currentLng, targetLatVar, targetLngVar);
     const stepDistance = haversine(currentLat, currentLng, newLat, newLng);
 
-    if (stepDistance >= distance || distance <= 0.00001) {
-        currentLat = targetLatVar;
-        currentLng = targetLngVar;
-        currentWaypointIndex++;
-        if (currentWaypointIndex < waypoints.length) {
-            targetLatVar = waypoints[currentWaypointIndex][0];
-            targetLngVar = waypoints[currentWaypointIndex][1];
-            scheduleNextFrame(updatePosition);
-        } else {
-            isActive = false;
-            marker.remove();
-            if (headingLine) map.removeLayer(headingLine);
-        }
+if (stepDistance >= distance || distance <= 0.00001) {
+    currentLat = targetLatVar;
+    currentLng = targetLngVar;
+    currentWaypointIndex++;
+
+    if (currentWaypointIndex < waypoints.length) {
+        targetLatVar = waypoints[currentWaypointIndex][0];
+        targetLngVar = waypoints[currentWaypointIndex][1];
+        scheduleNextFrame(updatePosition);
     } else {
+        isActive = false;
+
+        // Удаляем круг
+        if (marker._speedCircle) {
+            map.removeLayer(marker._speedCircle);
+        }
+
+        // Удаляем маркер
+        marker.remove();
+
+        if (headingLine)
+            map.removeLayer(headingLine);
+    }
+}
+ else {
         currentLat = newLat;
         currentLng = newLng;
         rotateIcon(currentLat, currentLng, targetLatVar, targetLngVar, speed);
@@ -1890,7 +1937,10 @@ marker.on('click', function (e) {
     if (deleteMode) {
         e.originalEvent.stopPropagation(); // блокируем всплытие
         e.originalEvent.preventDefault();  // предотвращаем другие действия
-
+    // 🟡 Удаляем круг
+    if (marker._speedCircle) {
+        map.removeLayer(marker._speedCircle);
+    }
         if (confirm('Удалить этот объект?')) {
             marker.remove();
             isActive = false;
@@ -2113,6 +2163,7 @@ fetch('okkyp.json')
       }
     }).addTo(map);
   });
+
 </script>
 
 </body>
