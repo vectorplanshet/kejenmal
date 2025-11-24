@@ -1080,9 +1080,9 @@ updateOverlayFilter();
 
                       const objectId = generateId();
             let iconUrl;
-            let iconClass = 'red-id';
-            let shiftedClass = ''
-            let shiftedClasss = ''
+let iconClass = "red-id";
+let shiftedClass = "";
+let shiftedClasss = "";
 
             if (speed === 0) { 
                 
@@ -1110,27 +1110,25 @@ updateOverlayFilter();
         iconAnchor: [10, 8],
     });
 } else {
-    // Условия для выбора иконки в зависимости от скорости
-    if (speed >= 120 && speed <= 121) {
-        iconUrl = 'supercam.png';
-} else if (speed > 120 && speed <= 200) {
-    // Генерируем случайное число от 0 до 1
-    const random = Math.random(); // число от 0 до 1
 
-    if (random < 0.3) {
-        // 80% шанс
-        iconUrl = 'neyst tip.png';
-    } else {
-        // 20% шанс
-        iconUrl = 'shahed.png';
-    }
-    } else if (speed >= 7559 && speed < 7560) {
-        iconUrl = 'iskander.png';
-        shiftedClass = 'shifted-info-container';
-    } else if (speed >= 950 && speed <= 951) {
-        iconUrl = 'kalibr.png';
-        iconClass = 'kr';
-        shiftedClass = 'shifted-info-container';
+// Условия выбора иконки по скорости
+if (speed >= 120 && speed <= 121) {
+    iconUrl = 'supercam.png';
+
+} else if (speed > 120 && speed <= 200) {
+
+    // случай иконки — создаём случай 1 раз
+    const random = Math.random();
+    iconUrl = random < 0.3 ? 'neyst tip.png' : 'shahed.png';
+
+} else if (speed >= 7559 && speed < 7560) {
+    iconUrl = 'iskander.png';
+    shiftedClass = 'shifted-info-container';
+
+} else if (speed >= 950 && speed <= 951) {
+    iconUrl = 'kalibr.png';
+    iconClass = 'kr';
+    shiftedClass = 'shifted-info-container';
     } else if (speed >= 1000 && speed <= 1001) {
         iconUrl = 'x101.png';
         iconClass = 'kr';
@@ -1261,152 +1259,155 @@ updateOverlayFilter();
         iconUrl = 'neyst tip.png';
     }
       const objectId2 = getNextObjectIdBlue();
-      
-  if (iconUrl === 'litak.png') {
-  const objectId3 = getNextLitakId();
-  iconHtml = `
-    <div class="icon-container ${iconClass}">
-      <img src="${iconUrl}" class="icon" />
-      <div class="info-container ${shiftedClass} ${shiftedClasss}">
-        <span class="label-container ${iconClass}">${objectId3}</span>
-        <span class="r-container ${iconClass}">ЛБ·</span>
-      </div>
-    </div>
-  `;
-} else if (iconClass === 'kr') {
-      iconUrl = 'kalibr.png';
-      iconClass = 'red-id';
-  iconHtml = `
-    <div class="icon-container ${iconClass}">
-      <img src="${iconUrl}" class="icon" />
-      <div class="info-container ${shiftedClass} ${shiftedClasss}">
-        <span class="label-container ${iconClass}">${objectId}р</span>
-        <span class="r-container ${iconClass}">ПП·</span>
-      </div>
-    </div>
-  `;
-      icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [3, 3],      // 👈 спец. размер для KR
-        iconAnchor: [3, 9], // 👈 спец. якорь для KR
-    });
-} else if (iconClass === 'zl') {
-  const objectId2 = getNextObjectIdBlue();
-    iconUrl = 'zl.png';
-    iconHtml = `
-        <div class="icon-container ${iconClass}">
-            <img src="${iconUrl}" class="icon" />
-            <div class="info-container ${shiftedClass} ${shiftedClasss}">
-                <span class="label-container ${iconClass}">0${objectId2}р</span>
-                <span class="r-container ${iconClass}">ЗЛ·</span>
+    if (!window._markerIconMemory) window._markerIconMemory = {};
+    const key = `${lat}-${lng}-${speed}`;
+
+    if (!window._markerIconMemory[key]) {
+        window._markerIconMemory[key] = iconUrl;  // сохраняем один раз
+    }
+
+    iconUrl = window._markerIconMemory[key];       // используем сохранённый тип
+    // -----------------------------------------
+
+    
+    if (iconUrl === 'litak.png') {
+        const objectId3 = getNextLitakId();
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">${objectId3}</span>
+                    <span class="r-container ${iconClass}">ЛБ·</span>
+                </div>
             </div>
-        </div>
-    `;
-        icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [28.8, 28.8], // общий размер
-        iconAnchor: [14.4, 14.4],
-    });
-} else if (iconClass === 'blue-id') {
-    iconUrl = 'blue.png';
-  iconHtml = `
-    <div class="icon-container ${iconClass}">
-      <img src="${iconUrl}" class="icon" />
-      <div class="info-container ${shiftedClass} ${shiftedClasss}">
-        <span class="label-container ${iconClass}">0${objectId2}р</span>
-        <span class="r-container ${iconClass}">СВ·</span>
-      </div>
-    </div>
-  `;
-        icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [28.8, 28.8], // общий размер
-        iconAnchor: [14.4, 14.4],
-    });
-} else if (iconClass === 'vertolet') {
-          iconClass = 'blue-id';
-  iconHtml = `
-    <div class="icon-container ${iconClass}">
-      <img src="${iconUrl}" class="icon" />
-      <div class="info-container ${shiftedClass} ${shiftedClasss}">
-        <span class="label-container ${iconClass}">0${objectId2}р</span>
-        <span class="r-container ${iconClass}">СВ·</span>
-      </div>
-    </div>
-  `;
-        icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [28.8, 28.8], // общий размер
-        iconAnchor: [14.4, 14.4],
-    });
-} else if (iconClass === 'perexop') {
-    iconHtml = `
-        <div class="icon-container ${iconClass}">
-            <img src="${iconUrl}" class="icon" />
-            <div class="info-container ${shiftedClass} ${shiftedClasss}">
-                <span class="label-container ${iconClass}">0${objectId2}р</span>
-                <span class="r-container ${iconClass}">ЗЛ·</span>
+        `;
+    } else if (iconClass === 'kr') {
+        iconUrl = 'kalibr.png';
+        iconClass = 'red-id';
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">${objectId}р</span>
+                    <span class="r-container ${iconClass}">ПП·</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
         icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [28.8, 28.8], // общий размер
-        iconAnchor: [14.4, 14.4],
-    });
-} else {
-    const iconTypes = {
-    "shahed 238.png": "Ударний дрон",
-    "shahed.png": "Ударний дрон",
-    "кр.png": "Крилата ракета"
-};
-
-// В блоке else (для обычных иконок)
-const iconName = iconTypes[iconUrl] || "Невідомий об'єкт";
-
-// Генерация случайного числа от 1 до 200
-const randomNumber = Math.floor(Math.random() * 200) + 1;
-
-
-    // Основной шаблон для всех остальных случаев
-    iconHtml = `
-        <div class="icon-container ${iconClass}">
-            <img src="${iconUrl}" class="icon" />
-             <div class="info-container ${shiftedClass} ${shiftedClasss}">
-                <span class="label-container ${iconClass}">${objectId}р</span>
-                <span class="r-container ${iconClass}">ПП·</span>
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [3, 3],
+            iconAnchor: [3, 9],
+        });
+    } else if (iconClass === 'zl') {
+        const objectId2 = getNextObjectIdBlue();
+        iconUrl = 'zl.png';
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">0${objectId2}р</span>
+                    <span class="r-container ${iconClass}">ЗЛ·</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
         icon = L.divIcon({
-        className: 'icon',
-        html: iconHtml,
-        iconSize: [28.8, 28.8], // общий размер
-        iconAnchor: [14.4, 14.4],
-    });
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
+    } else if (iconClass === 'blue-id') {
+        iconUrl = 'blue.png';
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">0${objectId2}р</span>
+                    <span class="r-container ${iconClass}">СВ·</span>
+                </div>
+            </div>
+        `;
+        icon = L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
+    } else if (iconClass === 'vertolet') {
+        iconClass = 'blue-id';
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">0${objectId2}р</span>
+                    <span class="r-container ${iconClass}">СВ·</span>
+                </div>
+            </div>
+        `;
+        icon = L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
+    } else if (iconClass === 'perexop') {
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">0${objectId2}р</span>
+                    <span class="r-container ${iconClass}">ЗЛ·</span>
+                </div>
+            </div>
+        `;
+        icon = L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
+    } else {
+        const iconTypes = {
+            "shahed 238.png": "Ударний дрон",
+            "shahed.png": "Ударний дрон",
+            "кр.png": "Крилата ракета"
+        };
+
+        const iconName = iconTypes[iconUrl] || "Невідомий об'єкт";
+        const randomNumber = Math.floor(Math.random() * 200) + 1;
+
+        iconHtml = `
+            <div class="icon-container ${iconClass}">
+                <img src="${iconUrl}" class="icon" />
+                <div class="info-container ${shiftedClass} ${shiftedClasss}">
+                    <span class="label-container ${iconClass}">${objectId}р</span>
+                    <span class="r-container ${iconClass}">ПП·</span>
+                </div>
+            </div>
+        `;
+        icon = L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
+    }
 }
-}
+
 let iconCreated = false;
 function addSpeedCircle(marker, speed) {
     let color = null;
 
-    // Цвет круга по скорости
     if (speed > 4000) {
-        color = "#ff6a00";       // ярко-оранжевый
+        color = "#ff6a00";
     } else if (speed >= 2000) {
-        color = "#ffea70";       // мягкий жёлтый
+        color = "#ffea70";
     } else {
-        return null;             // <2000 → круга нет
+        return null;
     }
 
     const latlng = marker.getLatLng();
-
-    // CircleMarker = идеальный пиксельный круг под иконкой
     const circle = L.circleMarker(latlng, {
         radius: 18,
         stroke: false,
@@ -1414,7 +1415,6 @@ function addSpeedCircle(marker, speed) {
         fillOpacity: 0.65,
     }).addTo(map);
 
-    // Круг следует за маркером при любом движении
     marker.on("move", () => {
         circle.setLatLng(marker.getLatLng());
     });
@@ -1737,12 +1737,6 @@ if (marker._expanded) {
         });
     };
 }
-const TYPE_NAMES = {
-    "shahed.png": "Ударний дрон",
-    "shahed 238.png": "Ударний дрон",
-    "orlan.png": "Розвіддрон",
-    "kr": "Крилата ракета",
-};
 
 // ==== Клик по маркеру ====
 // Добавляем функционал линии направления
@@ -1752,22 +1746,31 @@ marker.on('click', () => {
     createTopMenu(marker);
 
     // сохранить исходные параметры 1 раз
-    if (!marker._originalIconHtml) {
-        marker._originalIconHtml = iconHtml;
-        marker._originalAnchor   = marker.options.icon.options.iconAnchor;
-        marker._originalSize     = marker.options.icon.options.iconSize;
-        marker._expanded = false;
+if (!marker._saved) {
 
-        // === ВЫТЯНЕМ ТЕКСТЫ ИЗ ОРИГИНАЛЬНОЙ ИКОНКИ ===
+    // HTML который реально стоит у маркера
+    const iconHtmlThis = marker.options.icon.options.html;
+
+    // Сохраняем оригинальный HTML
+    marker._originalIconHtml = iconHtmlThis;
+
+    // Сохраняем размер и якорь
+    marker._originalAnchor = marker.options.icon.options.iconAnchor;
+    marker._originalSize   = marker.options.icon.options.iconSize;
+
+    // Разбор HTML
     const temp = document.createElement("div");
-temp.innerHTML = iconHtml;
+    temp.innerHTML = iconHtmlThis;
 
-const idEl = temp.querySelector(".label-container");
-const rEl  = temp.querySelector(".r-container");
+    const idEl = temp.querySelector(".label-container");
+    const rEl  = temp.querySelector(".r-container");
 
-marker._originalID = idEl ? idEl.textContent.trim() : "";
-marker._originalR  = rEl  ? rEl.textContent.trim() : ""; 
-    }
+    marker._originalID = idEl ? idEl.textContent.trim() : "";
+    marker._originalR  = rEl  ? rEl.textContent.trim() : "";
+
+    marker._saved = true; // чтобы не сохранять снова
+}
+
 
     // ==== Разворачиваем ====
     if (!marker._expanded) {
@@ -1794,7 +1797,7 @@ marker._originalR  = rEl  ? rEl.textContent.trim() : "";
                      ">
 
                     <!-- строка 1: ID + тип -->
-                    <div style="display:flex; gap:3px;">
+                    <div style="display:flex; gap:4px;">
                         <span class="label-container ${iconClass}">${marker._originalID}</span>
                         <span class="r-container ${iconClass}">${marker._originalR}</span>
                     </div>
