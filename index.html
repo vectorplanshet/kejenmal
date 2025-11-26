@@ -1128,21 +1128,16 @@ if (speed >= 120 && speed <= 121) {
 } else if (speed >= 950 && speed <= 951) {
     iconUrl = 'kalibr.png';
     iconClass = 'kr';
-    shiftedClass = 'shifted-info-container';
     } else if (speed >= 1000 && speed <= 1001) {
         iconUrl = 'x101.png';
         iconClass = 'kr';
-        shiftedClass = 'shifted-info-container';
     } else if (speed >= 450 && speed <= 459) {
         iconUrl = 'kab.png';
     } else if (speed >= 11024 && speed <= 11025) {
-        shiftedClass = 'shifted-info-container';
         iconUrl = 'Tsirkon.png';
     } else if (speed >= 14687 && speed <= 14688) {
-        shiftedClass = 'shifted-info-container';
         iconUrl = 'Kinzhal.png';
     } else if (speed >= 4899 && speed <= 4900) {
-        shiftedClass = 'shifted-info-container';
         iconUrl = 'Kh-22.png';
     } else if (speed >= 1049 && speed <= 1050) {
         shiftedClass = 'shifted-info-container';
@@ -1207,17 +1202,17 @@ if (speed >= 120 && speed <= 121) {
     } else if (speed >= 1002 && speed <= 1003) {
         iconUrl = 'f-16.png';
         iconClass = 'blue-id';
-    } else if (speed >= 1200 && speed <= 1201) {
+    } else if (speed >= 800 && speed <= 801) {
         iconUrl = 'Su-34.png';
         iconClass = 'red-id su34-icon';
-    } else if (speed >= 1600 && speed <= 1601) {
+    } else if (speed >= 815 && speed <= 816) {
         iconUrl = 'Su-57.png';
-    } else if (speed >= 1204 && speed <= 1205) {
+    } else if (speed >= 820 && speed <= 821) {
         iconUrl = 'Su-30.png';
     } else if (speed >= 1202 && speed <= 1203) {
         iconUrl = 'Su-30 BLR.png';
         iconClass = 'blue-id';  
-    } else if (speed >= 1400 && speed <= 1401) {
+    } else if (speed >= 840 && speed <= 840) {
         iconUrl = 'Su-35.png';
     } else if (speed >= 2300 && speed <= 2301) {
         iconUrl = 'Tu-22M3.png';
@@ -1238,7 +1233,7 @@ if (speed >= 120 && speed <= 121) {
         shiftedClass = 'shifted-info-container';
     } else if (speed >= 500 && speed <= 501) {
         iconUrl = 'shahed 238.png';
-    } else if (speed >= 2400 && speed <= 2450) {
+    } else if (speed >= 920 && speed <= 921) {
         iconUrl = 'mig-31.png';
     } else if (speed >= 800 && speed <= 801) {
         iconUrl = 'a-50.png';
@@ -1281,6 +1276,12 @@ if (speed >= 120 && speed <= 121) {
                 </div>
             </div>
         `;
+                icon = L.divIcon({
+            className: 'icon',
+            html: iconHtml,
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
+        });
     } else if (iconClass === 'kr') {
         iconUrl = 'kalibr.png';
         iconClass = 'red-id';
@@ -1296,8 +1297,8 @@ if (speed >= 120 && speed <= 121) {
         icon = L.divIcon({
             className: 'icon',
             html: iconHtml,
-            iconSize: [3, 3],
-            iconAnchor: [3, 9],
+            iconSize: [28.8, 28.8],
+            iconAnchor: [14.4, 14.4],
         });
     } else if (iconClass === 'zl') {
         const objectId2 = getNextObjectIdBlue();
@@ -1739,7 +1740,6 @@ if (marker._expanded) {
 }
 
 // ==== Клик по маркеру ====
-// Добавляем функционал линии направления
 let headingLine = null;
 
 marker.on('click', () => {
@@ -1767,56 +1767,74 @@ if (!marker._saved) {
 
     marker._originalID = idEl ? idEl.textContent.trim() : "";
     marker._originalR  = rEl  ? rEl.textContent.trim() : "";
+marker._originalRLS = getRlsForObject(objectId, iconUrl);
 
     marker._saved = true; // чтобы не сохранять снова
 }
 
+const ICON_TYPES = {
+    "shahed.png": "Ударний дрон",
+    "kalibr.png": "Крилата ракета",
+    "Su-35.png": "Су-35",
+    "Su-34.png": "Су-34",
+    "Su-30.png": "Су-30",
+    "Su-57.png": "Су-57",
+    "orlan.png": "Розвід. дрон",
+    "bplaper.png": "БпЛА перехоп.",
+    "vertolet.png": "Вертоліт",
+    "mig-31.png": "МіГ-31",
+ 
+};
+const objectType = ICON_TYPES[iconUrl] || "";
 
     // ==== Разворачиваем ====
     if (!marker._expanded) {
 
         const angle = marker._lastAngle || 0;
 
-        const expandedHtml = `
-            <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+       const expandedHtml = `
+<div class="icon-container ${iconClass} ${marker._expanded ? "expanded" : ""} ${objectType ? "with-type" : ""}">
 
-                <div class="info-container ${shiftedClass} ${shiftedClasss}"
-                     style="
-                        display:flex !important;
-                        flex-direction:column !important;
-                        align-items:flex-start !important;
-                        justify-content:flex-start !important;
+    <!-- БЛОК ИКОНКИ — ТОЛЬКО КАРТИНКА -->
+    <div class="icon-wrap">
+        <img src="${iconUrl}" class="icon" />
+    </div>
 
-                        padding: 1px 5px 1px 10px !important;
-                        min-width:auto !important;
-                        height:auto !important;
-                        gap: 1px !important;
-                        line-height:0.9 !important;
-                        contain:none !important;
-                     ">
+    <!-- ТЕКСТ — ОТДЕЛЬНО -->
+    <div class="info-container"
+         style="
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
 
-                    <!-- строка 1: ID + тип -->
-                    <div style="display:flex; gap:2px;">
-                        <span class="label-container ${iconClass}">${marker._originalID}</span>
-                        <span class="r-container ${iconClass}">${marker._originalR}</span>
-                    </div>
-
-                    <!-- строка 2: скорость -->
-                    <span class="r-container ${iconClass}">${speed}</span>
-
-                    <!-- строка 3: курс -->
-                    <span class="r-container ${iconClass}">${Math.round(angle)}°</span>
-
-                </div>
+            padding: 0.8px 4px 0.8px 8px !important;
+            min-width: auto !important;
+    height: auto !important;
+    gap: 0.8px !important;                    /* 1 * 0.83 */
+    line-height: 0.9 !important;
+    contain: none !important;
+             ">
+<span class="r-container ${iconClass}">${objectType}</span>
+            <div style="display:flex; gap:2px;">
+                <span class="label-container ${iconClass}">${marker._originalID}</span>
+                <span class="r-container ${iconClass}">${marker._originalR}</span>
             </div>
-        `;
 
-        // поднять иконку чтобы не проседала
-        const expandedAnchor = [
-            marker._originalAnchor[0],
-            marker._originalAnchor[1] + 2.5
-        ];
+            <span class="r-container ${iconClass}">${speed}</span>
+
+            <span class="r-container ${iconClass}">${Math.round(angle)}°</span>
+
+        </div>
+    </div>
+`;
+
+
+const expandedAnchor = [
+    marker._originalAnchor[0],
+    marker._originalAnchor[1] + (objectType ? 7.5 : 2.5)
+];
+
 
         marker.setIcon(L.divIcon({
             className: "icon",
@@ -1852,7 +1870,7 @@ if (!marker._saved) {
         weight: 0.8,      // тоньше
         opacity: 0.9
     }).addTo(map);
-});
+                });
 
 // ==== Функция обновления линии направления ====
 function updateHeadingLine(angleDeg) {
