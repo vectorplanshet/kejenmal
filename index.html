@@ -711,15 +711,24 @@ body {
 <!-- Модальное окно для отображения координат -->
   <!-- Меню в правом нижнем углу -->
  <div class="custom-menu">
-   <div class="menu-row">
-  <div style="width: 94px;"></div> <!-- 59 * 1.6 -->
-  <div class="custom-button">
-    <img src="reload.png" alt="Reload" />
+    <!-- LEFT ARROW ВЫШЕ -->
+  <div class="menu-row">
+    <div style="width: 130px;"></div>
+    <button id="left-arrow-button">
+      <img src="strelka.png" alt="Arrow" />
+    </button>
   </div>
-  <div class="custom-button">
-    <img src="search.png" alt="Search" />
+
+  <!-- первые две кнопки -->
+  <div class="menu-row">
+    <div style="width: 94px;"></div>
+    <div class="custom-button">
+      <img src="reload.png" alt="Reload" />
+    </div>
+    <div class="custom-button">
+      <img src="search.png" alt="Search" />
+    </div>
   </div>
-</div>
 <div class="menu-row">
   <div style="width: 130px;"></div> <!-- 81 * 1.6 -->
   <div class="custom-button">
@@ -750,10 +759,7 @@ body {
   </div>
 </div>
 <div class="menu-row">
-  <div style="width: 64px;"></div> <!-- 40 * 1.6 -->
-  <button id="left-arrow-button">
-    <img src="strelka.png" alt="Arrow" />
-  </button>
+  <div style="width: 98px;"></div> <!-- 40 * 1.6 -->
   <button id="alert-button">0</button>
   <button id="deleteButton"><i class="fas fa-trash-alt"></i></button>
 </div>
