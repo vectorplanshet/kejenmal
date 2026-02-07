@@ -4479,7 +4479,6 @@ fetch('trevoga.json')
       if (isLugansk) {
 
 const layer = L.geoJSON(feature, {
-  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4522,7 +4521,6 @@ const layer = L.geoJSON(feature, {
           // загружаем Kyiv.json
           const kyivData = await fetch('Kyiv.json').then(r => r.json());
 const kyivLayer = L.geoJSON(kyivData, {
-  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4571,7 +4569,6 @@ const kyivLayer = L.geoJSON(kyivData, {
 
               if (districtCheckbox.checked) {
 const layer = L.geoJSON(featureData, {
-  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4821,7 +4818,6 @@ fetch('line.json')
   .then(res => res.json())
   .then(data => {
     frontLineLayer = L.geoJSON(data, {
-      pane: 'geoStaticPane',
       style: {
         color: 'red',
         weight: 1.5,
@@ -4835,7 +4831,7 @@ fetch('okkyp.json')
   .then(res => res.json())
   .then(data => {
     occLayer = L.geoJSON(data, {
-      pane: 'geoStaticPane',
+
       style: {
         stroke: false,
         fillColor: '#e6a57a',
