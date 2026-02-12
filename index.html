@@ -8,7 +8,9 @@
     <div class="template-container">
     </div>    <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -172,7 +174,7 @@ input[type="text"]:focus {
 }
 
 :root {
-    --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.5) brightness(0.7) grayscale(3);
+    --map-tiles-filter: brightness(0.6) invert(1) contrast(2) hue-rotate(200deg) saturate(0.5) brightness(0.7) grayscale(3);
 }
 
     .map-tiles {
@@ -218,6 +220,46 @@ input[type="text"]:focus {
 .style-pomelo .info-container1 {
     line-height: 11px; /* 7 * 1.6 */
 }
+ .style-pomelo .rls1-container {
+    font-size: 10.1px;
+    font-weight: 800;
+  font-family: "Nunito", sans-serif;    
+ 
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+            color: #333333;
+   }    
+    .style-pomelo .r1-container {
+    font-size: 10.1px;
+    font-weight: 800;
+  font-family: "Nunito", sans-serif;    
+ 
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+            color: #333333;
+   }    
+    .style-pomelo .label1-container {
+    font-size: 10.1px;
+    font-weight: 800;
+  font-family: "Nunito", sans-serif;    
+ 
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+            color: #333333;
+   }    
+    .style-pomelo .r1-container {
+    font-size: 10.1px;
+    font-weight: 800;
+  font-family: "Nunito", sans-serif;    
+ 
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+            color: #333333;
+   }   
 .style-pomelo .info-container {
     display: inline-flex;
     align-items: center;
@@ -436,7 +478,7 @@ button#alert-button {
     background-color: #D90045; 
     color: rgb(0, 0, 0);
     font-weight: bold;
-  font-size: 7.2px !important;
+  font-size: 5px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -701,10 +743,12 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  line-height: 30px;
+  line-height: 35px;
   text-align: center;
   border-radius: 0;
   box-shadow: none;
+font-family: 'Roboto', sans-serif;
+
 
   color: black;
   -webkit-appearance: none;
@@ -716,21 +760,20 @@ body {
   z-index: 9999;
   pointer-events: none;
 
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* синхронно с SVG */
   background-size: 105px 96px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabfb22f%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabfb22f%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabfb22f%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabfb22f%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
-
 
 
 #rightMenu {
   position: fixed;
-  top: 65px;     /* ↑ выше отступ */
-  bottom: 390px;  /* ↓ ниже отступ */
+  top: 20px;     /* ↑ выше отступ */
+  bottom: 230px;  /* ↓ ниже отступ */
 
   width: 290px;              /* широкая панель */
   
@@ -747,7 +790,7 @@ body {
 
 /* ОТКРЫТО — ВЫЛЕЗЛА ВЛЕВО, СПРАВА ЩЕЛЬ */
 #rightMenu.open {
-  right: 16px;               /* ← ЗАЗОР СПРАВА */
+  right: 8px;               /* ← ЗАЗОР СПРАВА */
 }
 
 .settings-panel {
@@ -870,6 +913,16 @@ body {
 .style-select select:focus {
   background-color: #626262;
 }
+/* ПЛАНШЕТ — ГОРИЗОНТАЛЬНО, СПРАВА */
+@media (max-width: 1340px) and (orientation: landscape) {
+
+  #rightMenu {
+     bottom: 10px;  /* ↓ ниже отступ */
+  }
+
+
+}
+
 /* ================================
    STYLE: MARIUPOL
    ================================ */
@@ -897,7 +950,7 @@ transform: scale(0.95);
     border-top-color: rgba(0,0,0,0.95);
     border-left-color: rgba(0,0,0,0.95);
     border-right-color: rgba(0,0,0,0.95);
-    border-bottom-color: #dcdcdc;
+    border-bottom-color: rgba(0,0,0,0);
     box-sizing: border-box;
 
     /* 👇 вот эти две магические строки */
@@ -923,29 +976,28 @@ transform: scale(0.95);
   z-index: 9999;
   pointer-events: none;
 
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* синхронно с SVG */
   background-size: 105px 96px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='16' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf3044%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf3044%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf3044%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf3044%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
-
 
 /* ================================
    TEXT BLOCKS
    ================================ */
 
 .style-mariupol .label-container {
-  font-size: 10.4px;
-  font-weight: 800;
+  font-size: 10.5px;
+  font-weight: 600;
   font-family: 'Roboto', sans-serif;
 }
 
 .style-mariupol .r-container {
-  font-size: 10.4px;
-  font-weight: 800;
+  font-size: 10.5px;
+  font-weight: 600;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -960,12 +1012,12 @@ transform: scale(0.95);
 }
 
 .style-mariupol .rls-container {
-  font-size: 10.4px;
+  font-size: 10.5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   color: #333333;
 }
 
@@ -1004,7 +1056,7 @@ transform: scale(0.95);
 .style-mariupol .icon-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 3px;
 
   font-size: 11.2px;
   position: absolute;
@@ -1205,13 +1257,14 @@ transform: scale(0.95);
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* СУЩЕСТВЕННО БОЛЬШЕ ЗАЗОР */
   background-size: 140px 125px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");}
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a87941%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a87941%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a87941%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a87941%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
 
 /* ===============================
    VLADIMIR STYLE
@@ -1431,19 +1484,19 @@ transform: scale(0.95);
     object-fit: cover;
     display: block;
 }
-.style-val-slom .leaflet-watermark {
+    .style-val-slom .leaflet-watermark {
   position: absolute;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* СУЩЕСТВЕННО БОЛЬШЕ ЗАЗОР */
   background-size: 140px 125px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");}
-
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
 /* обычное состояние — текст "схлопнут" */
 .hide-text .icon-container:not(.expanded) .info-container {
   transform: scaleY(0);
@@ -1509,7 +1562,7 @@ transform: scale(0.95);
     border-top-color: rgba(0,0,0,0.95);
     border-left-color: rgba(0,0,0,0.95);
     border-right-color: rgba(0,0,0,0.95);
-    border-bottom-color: #dcdcdc;
+    border-bottom-color: rgba(0,0,0,0.95);
     box-sizing: border-box;
 
     /* 👇 вот эти две магические строки */
@@ -1536,8 +1589,8 @@ transform: scale(0.95);
 .style-labrador .label1-container,
 .style-labrador .r1-container {
     font-size: 10.3px;          /* 8.6×1.2 */
-    font-weight: 400;
-    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+      font-family: "Nunito", sans-serif;    
     -webkit-text-stroke-color: black;
 }
 
@@ -1585,15 +1638,14 @@ transform: scale(0.95);
   z-index: 9999;
   pointer-events: none;
 
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* синхронно с SVG */
   background-size: 105px 96px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='16' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf8c2c%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf8c2c%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf8c2c%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf8c2c%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
-
 
      .style-labrador-vl .shifted-id-x-101 {
     margin-left: 32px; /* 20 * 1.6 */
@@ -1632,7 +1684,7 @@ transform: scale(0.95);
     border-top-color: rgba(0,0,0,0.95);
     border-left-color: rgba(0,0,0,0.95);
     border-right-color: rgba(0,0,0,0.95);
-    border-bottom-color: #dcdcdc;
+    border-bottom-color: rgba(0,0,0,0.95);
     box-sizing: border-box;
 
     /* 👇 вот эти две магические строки */
@@ -1682,8 +1734,8 @@ transform: scale(0.95);
 }
 
 .style-labrador-vl .icon-container .icon {
-    width: 30px;      /* 26 × 1.2 */
-    height: 30px;     /* 26 × 1.2 */
+    width: 29px;      /* 26 × 1.2 */
+    height: 29px;     /* 26 × 1.2 */
     object-fit: cover;
     display: block;
 }
@@ -1729,7 +1781,7 @@ transform: scale(0.95);
     width: 26px;
 }
 .style-labrador-vl .icon-container::after {
-    width: 30px;
+    width: 29px;
 }
 .style-labrador-vl .leaflet-watermark {
   position: absolute;
@@ -1737,15 +1789,14 @@ transform: scale(0.95);
   z-index: 9999;
   pointer-events: none;
 
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* синхронно с SVG */
   background-size: 105px 96px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='16' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf240e%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf240e%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf240e%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf240e%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
-
 .leaflet-scale-bracket {
   position: relative;
   width: 160px;
@@ -1936,13 +1987,13 @@ transform: scale(0.95);
   z-index: 9999;
   pointer-events: none;
 
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* синхронно с SVG */
   background-size: 105px 96px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='14' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='15' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='105' height='96'%3E%3Cg transform='rotate(-41 52.5 48)'%3E%3Ctext x='52.5' y='16' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf23bf%3C/text%3E%3Ctext x='16' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf23bf%3C/text%3E%3Ctext x='89' y='48' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf23bf%3C/text%3E%3Ctext x='52.5' y='80' text-anchor='middle' font-family='Arial' font-size='14' fill='%23000' fill-opacity='0.75'%3Eabf23bf%3C/text%3E%3C/g%3E%3C/svg%3E");
 }
 
 
@@ -2058,17 +2109,17 @@ transform: scale(0.95);
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.27;
+  opacity: 0.3;
   background-repeat: repeat;
 
   /* СУЩЕСТВЕННО БОЛЬШЕ ЗАЗОР */
   background-size: 140px 125px;
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Eabf2a1d%3C/text%3E%3C/g%3E%3C/svg%3E");}
-
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='125'%3E%3Cg transform='rotate(-41 70 62.5)'%3E%3Ctext x='70' y='22' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='22' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='118' y='62.5' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3Ctext x='70' y='105' text-anchor='middle' font-family='Arial' font-size='16' fill='%23000' fill-opacity='0.75'%3Ec0a8bea4%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
 /* 🔒 Фиксация иконки ТОЛЬКО для style-val */
 .style-val .icon-container .icon {
-    content: url("neyst tip.png") !important;
+    content: url("neyst tip.svg") !important;
     pointer-events: none;
 }
 
@@ -2084,43 +2135,43 @@ transform: scale(0.95);
 /* blue-id */
 .style-val .blue-id .icon,
 .style-val .icon.blue-id {
-    content: url("blue 2.png") !important;
+    content: url("blue.svg") !important;
 }
 
 /* red-id */
 .style-val .red-id .icon,
 .style-val .icon.red-id {
-    content: url("neyst tip.png") !important;
+    content: url("neyst tip.svg") !important;
 }
 
 /* zl */
 .style-val .zl .icon,
 .style-val .icon.zl {
-    content: url("zl.png") !important;
+    content: url("zl.svg") !important;
 }
 
 /* vertolet */
 .style-val .vertolet .icon,
 .style-val .icon.vertolet {
-    content: url("blue 2.png") !important;
+    content: url("blue.svg") !important;
 }
 
 /* litak */
 .style-val .litak .icon,
 .style-val .icon.litak {
-    content: url("zl.png") !important;
+    content: url("zl.svg") !important;
 }
 
 /* perexop */
 .style-val .perexop .icon,
 .style-val .icon.perexop {
-    content: url("zl.png") !important;
+    content: url("zl.svg") !important;
 }
 
 /* kr */
 .style-val .kr .icon,
 .style-val .icon.kr {
-    content: url("neyst tip.png") !important;
+    content: url("neyst tip.svg") !important;
 }
 .style-val .eppo .icon,
 .style-val .icon.eppo {
@@ -2138,6 +2189,13 @@ transform: scale(0.95);
     content: "р" !important;
     margin-left: 0 !important;
 }
+/* litak.svg — НИКОГДА не показывать "р" */
+.litak-id.label-container::after,
+.icon-container.expanded .zl-id.label-container::after {
+    content: "" !important;
+    margin-left: 0 !important;
+}
+
 /* ГЛОБАЛЬНЫЙ СБРОС ПЕРЕД ПРИМЕНЕНИЕМ СТИЛЯ */
 .icon-container {
   contain: none;
@@ -2249,8 +2307,17 @@ transform: scale(0.95);
 #left-arrow-button {
   display: none;
 }
-
-
+.leaflet-tile {
+  visibility: visible !important;
+}
+.leaflet-tile-container {
+  will-change: transform;
+}
+#map,
+.leaflet-container,
+.leaflet-map-pane {
+  background: #e6e6e6;
+}
 #zoom-out {
   line-height: 38px;   /* ⬅️ опускаем минус */
 }
@@ -2518,7 +2585,182 @@ body.formular-color .blue-id * {
 #azimuthOverlay .azimuth-footer {
   margin-top: auto; /* ⬅️ уезжает вниз */
 }
+/* по умолчанию */
+.leaflet-tile-pane {
+  filter: none;
+}
 
+:root {
+  --map-contrast: 2;
+}
+
+.dark-map .leaflet-tile-pane {
+  filter:
+    brightness(0.6)
+    invert(1)
+    contrast(var(--map-contrast))
+    hue-rotate(200deg)
+    saturate(0.5)
+    brightness(0.7)
+    grayscale(3);
+}
+
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #444;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #8bc34a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #8bc34a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#contrastSlider {
+  width: 100%;
+  margin-top: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+
+  height: 6px;
+  border-radius: 4px;
+
+  /* по умолчанию (неактивно) */
+  background-color: #444;
+  opacity: 0.4;
+
+  transition: background 0.2s, opacity 0.2s;
+}
+
+/* обычное состояние */
+#contrastSlider {
+  width: 100%;
+  margin-top: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+
+  height: 6px;
+  border-radius: 4px;
+
+  background-color: #444;
+  opacity: 0.4;
+
+  /* 🔘 точки — СЕРЫЕ по умолчанию */
+  background-image:
+    radial-gradient(circle, #777 1.2px, transparent 1.3px);
+  background-size: calc(100% / 14) 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+
+/* бегунок */
+#contrastSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #eaeaea;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#contrastSlider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: #eaeaea;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🔒 затемнено, когда тёмная мапа OFF */
+.contrast-disabled #contrastSlider {
+  background: #444;
+  opacity: 0.35;
+  pointer-events: none; /* 🔥 блокируем крутилку */
+}
+body:not(.contrast-disabled) #contrastSlider {
+  opacity: 1;
+  background-color: #C9D8BB;
+
+  background-image:
+    radial-gradient(circle, #407A26 1.2px, transparent 1.3px);
+  background-size: calc(100% / 14) 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+#contrastSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #777;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#contrastSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #777;
+  cursor: pointer;
+}
+
+/* активный */
+body:not(.contrast-disabled) #contrastSlider::-webkit-slider-thumb {
+  background: #407A26;
+}
+body:not(.contrast-disabled) #contrastSlider::-moz-range-thumb {
+  background: #407A26;
+}
+.contrast-disabled #contrastSlider {
+  pointer-events: none; /* блокируем крутилку */
+}
+.style-pomelo .info-container1 {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    width: 70px;        /* ← ширина именно квадрата */
+    padding: 2.5 20px 2.5 20px; /* ← добавь px после 5 */
+    min-width: 63px;
+height: auto;
+line-height: normal;
+
+transform: scale(0.95);
+
+    border-style: solid;
+    border-width: 1px;
+    border-top-color: rgba(0,0,0,0.95);
+    border-left-color: rgba(0,0,0,0.95);
+    border-right-color: rgba(0,0,0,0.95);
+    border-bottom-color: rgba(0,0,0,0.95);
+    box-sizing: border-box;
+
+    /* 👇 вот эти две магические строки */
+    contain: layout paint;
+    will-change: transform;
+}
+.info-container1 span {
+    display: block;
+    line-height: 1; /* или конкретное число */
+}
 
     </style>
 </head>
@@ -2531,6 +2773,13 @@ body.formular-color .blue-id * {
 <div id="rightMenu">
   <div class="settings-panel">
     <div class="settings-title">Налаштування</div>
+<div class="setting-row">
+  <span class="setting-text">Показувати зону видачі</span>
+  <label class="switch">
+    <input type="checkbox" id="toggleRange">
+    <span class="slider"></span>
+  </label>
+</div>
 
     <div class="setting-row">
       <span class="setting-text">Показувати кордон</span>
@@ -2547,40 +2796,25 @@ body.formular-color .blue-id * {
         <span class="slider"></span>
       </label>
     </div>
+    
 <div class="setting-row">
-  <span class="setting-text">Показати лінію бойового зіткнення</span>
-  <label class="switch">
-    <input type="checkbox" id="toggleFrontLine">
-    <span class="slider"></span>
-  </label>
-</div>
-<div class="setting-row">
-  <span class="setting-text">Показувати текст</span>
-  <label class="switch">
-    <input type="checkbox" id="toggleText" checked>
-    <span class="slider"></span>
-  </label>
-</div>
-<div class="setting-row">
-  <span class="setting-text">Показувати якість фіксування</span>
-  <label class="switch">
-    <input type="checkbox" id="toggleQuality">
-    <span class="slider"></span>
-  </label>
-</div>
-
-<div class="setting-row">
-  <span class="setting-text">Показувати позицію</span>
+  <span class="setting-text">Поточна позиція</span>
   <label class="switch">
     <input type="checkbox" id="togglePosition">
     <span class="slider"></span>
   </label>
 </div>
-
 <div class="setting-row">
   <span class="setting-text">Всі ворожі летовища</span>
   <label class="switch">
     <input type="checkbox" id="toggleAirfields" checked>
+    <span class="slider"></span>
+  </label>
+</div>
+<div class="setting-row">
+  <span class="setting-text">Показати лінію бойового зіткнення</span>
+  <label class="switch">
+    <input type="checkbox" id="toggleFrontLine">
     <span class="slider"></span>
   </label>
 </div>
@@ -2591,6 +2825,64 @@ body.formular-color .blue-id * {
     <span class="slider"></span>
   </label>
 </div>
+<div class="setting-row">
+  <span class="setting-text">Формуляр для первинних джерел</span>
+  <label class="switch">
+    <input type="checkbox" id="toggleText" checked>
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="setting-row">
+  <span class="setting-text">Показувати час зникнення цілі</span>
+  <label class="switch">
+    <input type="checkbox" id="toggleQuality">
+    <span class="slider"></span>
+  </label>
+</div>
+<div class="setting-row">
+  <span class="setting-text">Темна мапа (beta)</span>
+
+  <label class="switch">
+    <input type="checkbox" id="darkMapToggle">
+    <span class="slider"></span>
+  </label>
+  
+</div>
+
+<div class="setting-row" style="margin-top: 14px;">
+  <span class="setting-text">
+    Рівень контрасності <b id="contrastValue">2</b>
+  </span>
+</div>
+
+<input
+  type="range"
+  id="contrastSlider"
+  min="1"
+  max="15"
+  step="1"
+  value="2"
+  disabled
+>
+<div class="style-section">
+  <div class="setting-row">
+    <span class="setting-text">Топографічна мапа (beta)</span>
+    <label class="switch">
+      <input type="checkbox" id="terrainToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="setting-row" style="margin-top: 10px;">
+    <span class="setting-text">Супутникова мапа</span>
+    <label class="switch">
+      <input type="checkbox" id="hybridToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
 
     <!-- 🔽 СТИЛЬ ВНУТРИ ПАНЕЛИ -->
     <div class="style-section">
@@ -2610,24 +2902,9 @@ body.formular-color .blue-id * {
         </select>
       </div>
     </div>
-<div class="style-section">
-  <div class="style-title">Карта</div>
-  <div class="style-select">
-    <select id="mapSelect">
-      <option value="osm" selected>OSM</option>
-      <option value="osmGray">OSM Gray</option>
-      <option value="satellite">Satellite</option>
-      <option value="googleStreets">Google Maps</option>
-      <option value="googleHybrid">Google Hybrid</option>
-      <option value="googleTerrain">Google Terrain</option>
-      <option value="openTopo">OpenTopoMap</option>
-      <option value="googleTerrainGray">Google Terrain Gray</option>
-    </select>
-  </div>
-</div>
 
-  </div>
-</div>
+  </div> <!-- settings-panel -->
+</div>   <!-- rightMenu -->
     <div id="map"></div>
 <!-- Модальное окно для отображения координат -->
   <!-- Меню в правом нижнем углу -->
@@ -2651,9 +2928,9 @@ body.formular-color .blue-id * {
     </div>
   </div>
 <div class="menu-row">
-  <div style="width: 130px;"></div> <!-- 81 * 1.6 -->
-  <div class="custom-button">
-    <img src="signal.png" alt="Signal" />
+  <div style="width: 130px;"></div>
+  <div class="custom-button" id="signal-button">
+    <img src="signal.png" alt="Signal">
   </div>
 </div>
 <div class="menu-row">
@@ -2829,7 +3106,7 @@ body.formular-color .blue-id * {
         <button class="modal-button modal-close" id="targetClose"><i class="fas fa-times"></i> Закрыть</button>
     </div>
                   <div class="dynamic-zoom" id="zoom-buttons">
-<button id="zoom-out"><span class="minus">–</span></button>
+<button id="zoom-out">–</button>
     <button id="zoom-in">+</button>
   </div>
     <div id="alert-container">
@@ -2876,12 +3153,28 @@ body.formular-color .blue-id * {
       
         const map = L.map('map', {
             zoomControl: false,
-             minZoom: 3, // ⬅️ дальше отдаляться нельзя
-               maxZoom: 19
+              worldCopyJump: true,
+zoomSnap: 0,
+zoomDelta: 0.1,
+wheelPxPerZoomLevel: 120,
+        zoomAnimation: false,
+  zoomAnimationThreshold: 0,
+  fadeAnimation: false,
+  markerZoomAnimation: false,
+    minZoom: 3, // ⬅️ дальше отдаляться нельзя
+
         }).setView([48.3794, 31.1656], 6);
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap';
+document.head.appendChild(link);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
+            maxZoom: 50,
+              zoomAnimation: false,
+  fadeAnimation: false,
+  markerZoomAnimation: false,
+
         }).addTo(map);
 map.on('zoom move', () => {
   azimuthSvgLabels.forEach(i =>
@@ -2916,55 +3209,14 @@ let occLayer = null;
       L.DomEvent.disableScrollPropagation(watermark);
 // Обычный OSM (без фильтра)
 const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 100,
+      zoomAnimation: false,
+  fadeAnimation: false,
+  markerZoomAnimation: false,
 
     attribution: '© OpenStreetMap contributors'
 });
 
-// OSM с CSS-фильтром (например, черно-белым)
-const osmGrayLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    className: 'map-tiles', // Класс, на который будет действовать фильтр
-    attribution: '© OpenStreetMap contributors'
-});
-
-
-// Черная OSM-карта (CartoDB Dark Matter)
-const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19,
-    attribution: '© <a href="https://carto.com/">CARTO</a>'
-});
-
-// Спутниковая карта с границами (Esri World Imagery with Labels)
-const satelliteLayerWithBorders = L.layerGroup([
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 19,
-        attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-    }),
-    L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 19,
-        attribution: 'Boundaries and labels © Esri'
-        
-    })
-    
-]);
-var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
-	minZoom: 0,
-	maxZoom: 20,
-	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	ext: 'png'
-});
-
-const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
-        
-});
-
-googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
-});
 
 googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
         maxZoom: 20,
@@ -2974,46 +3226,17 @@ googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
 });
-googleTerrainGray = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        className: 'map-tiles', // Класс, на который будет действовать фильтр
-        subdomains:['mt0','mt1','mt2','mt3']
-});
-var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-	maxZoom: 17,
-	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-});
-
-var OPNVKarte = L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
-	maxZoom: 18,
-	attribution: 'Map <a href="https://memomaps.de/">memomaps.de</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
-});
-var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}', {
-	minZoom: 0,
-	maxZoom: 20,
-	attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	ext: 'png'
-});
-
 // текущий активный слой
 let currentBaseLayer = osmLayer;
 
 // словарь слоёв
 const MAP_LAYERS = {
   osm: osmLayer,
-  osmGray: osmGrayLayer,
-  satellite: satelliteLayerWithBorders,
-  googleStreets: googleStreets,
   googleHybrid: googleHybrid,
   googleTerrain: googleTerrain,
-  openTopo: OpenTopoMap,
-  googleTerrainGray: googleTerrainGray
 };
 
-        let currentObjectId = 9500;
+        let currentObjectId = 8900;
         let deleteMode = false;
         const markers = [];
 
@@ -3148,8 +3371,22 @@ addPointBtn.addEventListener('click', () => {
 });
 
         map.on('click', (e) => {
-            if (deleteMode) return;
-    if (!addMode) return;   // 👈 работает ТОЛЬКО когда активна кнопка
+  if (deleteMode) return;
+
+  // 🚫 запрет кликов за пределами радиуса
+  if (!isInsideRange(e.latlng)) {
+    return;
+  }
+
+  const layer = e.layer;
+
+  // 2️⃣ азимутальная сетка
+  if (layer && layer._isAzimuth) {
+    azimuthGridLayer.removeLayer(layer);
+    return;
+  }
+
+  if (!addMode) return; // 👈 работает ТОЛЬКО когда активна кнопка
 
             const { lat, lng } = e.latlng;
 
@@ -3166,9 +3403,12 @@ let currentStyle = 'pomelo'; // pomelo | mariupol | bandera
 let showRLSName = true;
 const visibleMarkersLayer = L.layerGroup().addTo(map);
 const allMarkers = []; // тут храним ВСЕ маркеры
-
+let objectIdLocal = null;
 let shiftedClasss = "";
+const MAX_TRAIL_DISTANCE = 80000; // 80 км
+const MIN_MOVE_METERS = 50;       // минимальный шаг для точки
 
+let trailDistance = 0;
             if (speed === 0) { 
                 
     // Если скорость 0, сразу устанавливаем иконку EPVO
@@ -3184,6 +3424,9 @@ let shiftedClasss = "";
   <div class="icon-container1 ${iconClass}">
             <img src="${iconUrl}" class="icon" />
             <div class="info-container1 ${shiftedClass} ${shiftedClasss}">
+                <span class="label1-container ${iconClass}">${objectId1} ${kievTime}</span>
+                <span class="r1-container ${iconClass}">EPA</span>
+                <span class="rls1-container ${iconClass}">interesting s</span>
             </div>
                         </div>
         </div>
@@ -3191,24 +3434,24 @@ let shiftedClasss = "";
                 icon = L.divIcon({
         className: 'icon',
         html: iconHtml,
-        iconSize: [6.5, 6.5], // общий размер
-        iconAnchor: [10, 8],
+        iconSize: [28, 28], // общий размер
+        iconAnchor: [14, 14],
     });
 } else {
 
 // Условия выбора иконки по скорости
 if (speed >= 120 && speed <= 121) {
-    iconUrl = 'supercam.png';
+    iconUrl = 'supercam.svg';
 
 } else if (speed > 120 && speed <= 200) {
 
     // случай иконки — создаём случай 1 раз
     const random = Math.random();
-    iconUrl = random < 0.3 ? 'neyst tip.png' : 'shahed.png';
+    iconUrl = random < 0.3 ? 'neyst tip.svg' : 'shahed.svg';
 
 } else if (speed >= 6000 && speed < 8000) {
     const random = Math.random();
-    iconUrl = random < 0.7 ? 'neyst tip.png' : 'iskander.png';
+    iconUrl = random < 0.7 ? 'neyst tip.svg' : 'iskander.svg';
 
 } else if (speed >= 950 && speed <= 951) {
     iconUrl = 'kalibr.png';
@@ -3217,7 +3460,7 @@ if (speed >= 120 && speed <= 121) {
         iconUrl = 'x101.png';
         iconClass = 'kr';
     } else if (speed >= 450 && speed <= 459) {
-        iconUrl = 'kab.png';
+        iconUrl = 'kab.svg';
     } else if (speed >= 11024 && speed <= 11025) {
         iconUrl = 'Tsirkon.png';
     } else if (speed >= 14687 && speed <= 14688) {
@@ -3230,12 +3473,12 @@ if (speed >= 120 && speed <= 121) {
         iconClass = 'kr';
     } else if (speed >= 80 && speed <= 85) {
         iconUrl = 'parodia.png';
-    } else if (speed >= 290 && speed <= 291) {
-        iconUrl = 'Lancet.png';
+    } else if (speed >= 107 && speed <= 108) {
+        iconUrl = 'lancet.svg';
     } else if (speed >= 98 && speed <= 99) {
         iconUrl = 'gerbera.png';
     } else if (speed >= 118 && speed <= 119) {
-        iconUrl = 'ZZala.png';
+        iconUrl = 'ZZala.svg';
     } else if (speed >= 4500 && speed <= 4501) {
         iconUrl = 'grumble.png';
         shiftedClass = 'shifted-info-container';
@@ -3243,7 +3486,7 @@ if (speed >= 120 && speed <= 121) {
         shiftedClass = 'shifted-info-container';
         iconUrl = 'kh-69.png';
     } else if (speed >= 109 && speed <= 110) {
-        iconUrl = 'orlan.png';
+        iconUrl = 'orlan.svg';
     } else if (speed >= 5400 && speed <= 5401) {
         iconUrl = 'atacms.png';
         shiftedClass = 'shifted-info-container';
@@ -3288,19 +3531,19 @@ if (speed >= 120 && speed <= 121) {
         iconUrl = 'f-16.png';
         iconClass = 'blue-id';
     } else if (speed >= 800 && speed <= 801) {
-        iconUrl = 'Su-34.png';
+        iconUrl = 'Su-34.svg';
         iconClass = 'red-id su34-icon';
     } else if (speed >= 815 && speed <= 816) {
         iconUrl = 'Su-57.png';
     } else if (speed >= 820 && speed <= 821) {
-        iconUrl = 'Su-30.png';
+        iconUrl = 'Su-30.svg';
     } else if (speed >= 1202 && speed <= 1203) {
         iconUrl = 'Su-30 BLR.png';
         iconClass = 'blue-id';  
     } else if (speed >= 840 && speed <= 840) {
-        iconUrl = 'Su-35.png';
+        iconUrl = 'Su-35.svg';
     } else if (speed >= 700 && speed <= 701) {
-        iconUrl = 'Tu-22M3.png';
+        iconUrl = 'Tu-22M3.svg';
     } else if (speed >= 952 && speed <= 953) {
          iconUrl = 'Su25.png';
     } else if (speed >= 954 && speed <= 955) {
@@ -3319,26 +3562,26 @@ if (speed >= 120 && speed <= 121) {
     } else if (speed >= 500 && speed <= 501) {
         iconUrl = 'shahed 238.png';
     } else if (speed >= 920 && speed <= 921) {
-        iconUrl = 'mig-31.png';
+        iconUrl = 'mig-31.svg';
     } else if (speed >= 800 && speed <= 801) {
         iconUrl = 'a-50.png';
     } else if (speed >= 880 && speed <= 881) {
-        iconUrl = 'litak.png';
+        iconUrl = 'litak.svg';
         iconClass = 'litak-id'; 
     } else if (speed >= 1110 && speed <= 1111) {
         iconUrl = 'mirage.png';
         iconClass = 'blue-id';  
     } else if (speed >= 300 && speed <= 301) {
-        iconUrl = 'bplaper.png';
+        iconUrl = 'bplaperexop.svg';
             iconClass = 'perexop';  
     } else if (speed >= 205 && speed <= 250) {
-        iconUrl = 'vertolet.png';
+        iconUrl = 'vertolet.svg';
         iconClass = 'vertolet';  
     } else if (speed >= 790 && speed <= 791) {
-        iconUrl = 'mig-29.png';
+        iconUrl = 'mig-29.svg';
     } else {
         // Если скорость не попала ни в одно условие, ставим "neyst tip.png"
-        iconUrl = 'neyst tip.png';
+        iconUrl = 'neyst tip.svg';
     }
       const objectId2 = getNextObjectIdBlue();
       const isStyleVal = document.body.classList.contains('style-val');
@@ -3352,19 +3595,21 @@ if (speed >= 120 && speed <= 121) {
     iconUrl = window._markerIconMemory[key];       // используем сохранённый тип
     // -----------------------------------------
 
-    
-    if (iconUrl === 'litak.png') {
+  
+
+    if (iconUrl === 'litak.svg') {
         const objectId3 = getNextLitakId();
+        objectIdLocal = objectId3;
         iconClass = 'zl-id';
         iconHtml = `
             <div class="icon-container ${iconClass}">
                 <img src="${iconUrl}" class="icon" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
-<span class="label-container ${iconClass}" data-id="${objectId3}">
-  0${objectId3}
+<span class="r-container ${iconClass}" data-id="${objectId3}">
+  ${objectId3}
 </span>
 
-                    <span class="r-container ${iconClass}">ЛБ·</span>
+                    <span class="r-container ${iconClass}">ЛБ</span>
                 </div>
             </div>
         `;
@@ -3376,13 +3621,13 @@ if (speed >= 120 && speed <= 121) {
             iconAnchor: [12.05, 12.05],
         });
 } else if (iconClass === 'kr') {
-
-    iconUrl = 'kalibr.png';
+objectIdLocal = objectId; // ← СЮДА
+    iconUrl = 'kalibr.svg';
     iconClass = 'red-id';
 
         iconHtml = `
           <div class="icon-container ${iconClass}">
-            <img src="${iconUrl}" class="icon" />
+            <img src="${iconUrl}" class="icon marker-icon-clickable" />
             <div class="info-container ${shiftedClass} ${shiftedClasss}">
 <span class="label-container ${iconClass}" data-id="${objectId}">
   ${objectId}
@@ -3401,13 +3646,14 @@ if (speed >= 120 && speed <= 121) {
     });
 
     } else if (iconClass === 'blue-id') {
-        iconUrl = 'blue.png';
+      objectIdLocal = objectId2; // ← СЮДА
+        iconUrl = 'blue.svg';
         iconHtml = `
             <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+                <img src="${iconUrl}" class="icon marker-icon-clickable" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
-<span class="label-container ${iconClass}" data-id="${objectId2}">
-  0${objectId2}
+<span class="label-container ${iconClass}" data-id="${formatId(objectIdLocal)}">
+    ${formatId(objectIdLocal)}
 </span>
 
                     <span class="r-container ${iconClass}">СВ·</span>
@@ -3422,13 +3668,14 @@ if (speed >= 120 && speed <= 121) {
             iconAnchor: [12.05, 12.05],
         });
     } else if (iconClass === 'vertolet') {
+      objectIdLocal = objectId2; // ← СЮДА
         iconClass = 'blue-id';
         iconHtml = `
             <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+                <img src="${iconUrl}" class="icon marker-icon-clickable" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
-<span class="label-container ${iconClass}" data-id="${objectId2}">
-  0${objectId2}
+<span class="label-container ${iconClass}" data-id="${formatId(objectIdLocal)}">
+    ${formatId(objectIdLocal)}
 </span>
 
                     <span class="r-container ${iconClass}">СВ·</span>
@@ -3443,15 +3690,16 @@ if (speed >= 120 && speed <= 121) {
             iconAnchor: [12.05, 12.05],
         });
     } else if (iconClass === 'zl') {
-                                iconUrl = 'zl.png';
+      objectIdLocal = objectId2; // ← СЮДА
+                                iconUrl = 'zl.svg';
                                   iconClass = 'zl-id';
 
         iconHtml = `
             <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+                <img src="${iconUrl}" class="icon marker-icon-clickable" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
-<span class="label-container ${iconClass}" data-id="${objectId2}">
-  0${objectId2}
+<span class="label-container ${iconClass}" data-id="${formatId(objectIdLocal)}">
+    ${formatId(objectIdLocal)}
 </span>
                     <span class="r-container ${iconClass}">ЗЛ·</span>
                 </div>
@@ -3465,13 +3713,14 @@ if (speed >= 120 && speed <= 121) {
             iconAnchor: [12.05, 12.05],
         });
             } else if (iconClass === 'perexop') {
+              objectIdLocal = objectId2; // ← СЮДА
               iconClass = 'zl-id';
         iconHtml = `
             <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+                <img src="${iconUrl}" class="icon marker-icon-clickable" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
-<span class="label-container ${iconClass}" data-id="${objectId2}">
-  0${objectId2}
+<span class="label-container ${iconClass}" data-id="${formatId(objectIdLocal)}">
+    ${formatId(objectIdLocal)}
 </span>
 
                     <span class="r-container ${iconClass}">ЗЛ·</span>
@@ -3486,24 +3735,16 @@ if (speed >= 120 && speed <= 121) {
             iconAnchor: [12.05, 12.05],
         });
     } else {
-        const iconTypes = {
-            "shahed 238.png": "Ударний дрон",
-            "shahed.png": "Ударний дрон",
-            "кр.png": "Крилата ракета"
-        };
-
-        const iconName = iconTypes[iconUrl] || "Невідомий об'єкт";
-        const randomNumber = Math.floor(Math.random() * 200) + 1;
+        objectIdLocal = objectId;
 
         iconHtml = `
             <div class="icon-container ${iconClass}">
-                <img src="${iconUrl}" class="icon" />
+                <img src="${iconUrl}" class="icon marker-icon-clickable" />
                 <div class="info-container ${shiftedClass} ${shiftedClasss}">
 <span class="label-container ${iconClass}" data-id="${objectId}">
   ${objectId}
 </span>
                     <span class="r-container ${iconClass}">ПП·</span>
-
                 </div>
             </div>
         `;
@@ -3547,6 +3788,12 @@ function addSpeedCircle(marker, speed) {
 
 const marker = L.marker([lat, lng], { icon }).addTo(map);
 allMarkers.push(marker);
+// 🔥 сохраняем ID прямо в маркер
+marker._objectId = objectIdLocal;
+marker._type = iconUrl === 'litak.svg' ? 'litak' : 'other';
+
+marker._iconClass = iconClass;
+marker._speed = speed;
 marker._trueOriginalIconHtml = iconHtml; // настоящий
 marker._originalIconHtml = iconHtml;     // рабочий (будем менять)
 markersCount++;
@@ -3775,11 +4022,19 @@ function isWarningVisible() {
     if (!w) return false;
     return !w.classList.contains('hidden') && w.offsetHeight > 0;
 }
+document.fonts.ready.then(() => {
+    menu.style.fontFamily = '"Open Sans", Arial, sans-serif';
+});
 
 // ==== Верхнее меню ====
 // ==== Верхнее меню ====
 function createTopMenu(marker) {
+const isLitak = marker._type === 'litak';
+
     if (typeof deleteMode !== 'undefined' && deleteMode) return;
+      const objectId = marker._objectId;
+    if (!objectId) return;
+
     if (document.getElementById('top-menu-' + objectId)) return;
 
     // ✅ берём safe-top ИЗ CSS
@@ -3800,25 +4055,29 @@ const baseTop = isWarningVisible() ? 16 : 0;
 const offset = baseTop + existingMenus * 36;
 
 
-    Object.assign(menu.style, {
-        position: 'fixed',
-        top: offset + 'px',
-        left: '0',
-        width: '100%',
-        height: '36px',
-        background: 'rgba(0, 0, 0, 0.4)',
-        color: '#fff',
-        fontFamily: 'Consolas, monospace',
-        fontSize: '15.6px',
-        zIndex: '9999',
-        borderBottom: '1px solid rgba(255,255,255,0.15)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 9.6px',
-        boxShadow: 'none',
-        transition: 'none'
-    });
+Object.assign(menu.style, {
+    position: 'fixed',
+    top: offset + 'px',
+    left: '0',
+    width: '100%',
+    height: '36px',
+    background: 'rgba(0, 0, 0, 0.4)',
+    color: '#fff',
+    fontFamily: '"Open Sans", Arial, sans-serif',
+    fontSize: '12.6px',      // 👈 было 15.6px — чуть меньше
+    fontWeight: '600',     // 👈 жирнее
+    zIndex: '9999',
+    borderBottom: '1px solid rgba(255,255,255,0.15)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    padding: '0 144px 0 2px', // 👈 было 0 9.6px — теперь текст почти у края
+
+    boxShadow: 'none',
+    transition: 'none'
+});
+
 
     /* === ТЕКСТ === */
     const row = document.createElement('div');
@@ -3827,22 +4086,28 @@ Object.assign(row.style, {
   gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
   alignItems: 'center',
   width: '100%',
-  textAlign: 'center',
-  letterSpacing: '0.36px',
+
+  textAlign: 'left',   // 👈 было center
+  paddingLeft: '4px',  // 👈 общий сдвиг влево
   columnGap: '14.4px',
+
+  letterSpacing: '0.36px',
   boxSizing: 'border-box'
 });
+
 menu.style.paddingRight = '144px';
 
 
-    row.innerHTML = `
-        <div>${objectId}р</div>
-        <div>A0</div>
-        <div>D0</div>
-        <div>H0.0</div>
-        <div>V${speed}</div>
-        <div>1</div>
-    `;
+row.innerHTML = `
+    <div>${formatId(objectId)}${isLitak ? '' : 'р'}</div>
+    <div>A0</div>
+    <div>D0</div>
+    <div>H0.0</div>
+    <div>V${marker._speed}</div>
+    <div>1</div>
+    
+`;
+
 
     /* === КНОПКИ === */
     const icons = document.createElement('div');
@@ -3967,10 +4232,14 @@ if (warning) {
 
 // ==== Клик по маркеру ====
 let headingLine = null;
+marker.on('click', (e) => {
 
-marker.on('click', () => {
-    
-    // 🛑 1. DELETE MODE — ПЕРВЫМ
+    // ❌ кликнули НЕ по иконке — игнор
+    if (!e.originalEvent.target.closest('.marker-icon-clickable')) {
+        return;
+    }
+
+    // 🛑 DELETE MODE
     if (deleteMode) {
         e.originalEvent.stopPropagation();
         e.originalEvent.preventDefault();
@@ -4031,24 +4300,93 @@ marker._originalRLS = getRlsForObject(objectId, iconUrl);
 }
 
 const ICON_TYPES = {
-    "shahed.png": "Ударний дрон",
-    "kalibr.png": "Крилата ракета",
-    "Su-35.png": "Су-35",
-    "Su-34.png": "Су-34",
-    "Su-30.png": "Су-30",
-    "Su-57.png": "Су-57",
-    "orlan.png": "Розвід. дрон",
-    "kab.png": "КАБ",
-    "iskander.png": "Ракета",
-    "bplaper.png": "БпЛА перехоп.",
-    "vertolet.png": "Вертоліт",
-    "mig-31.png": "МіГ-31",
-    "ZZala.png": "зала",
-    "supercam.png": "Суперкам",
-    "Tu-22M3.png": "Ту-22М3",
-    "mig-29.png": "МіГ-29К",
+    "shahed.svg": [
+        { text: "Ударний дрон", weight: 70 },
+        { text: "Ударний БпЛА", weight: 15 },
+        { text: "ударний дрон", weight: 10 },
+        { text: "ударний бпла", weight: 5 }
+    ],
+
+    "supercam.svg": [
+    { text: "Суперкам",  weight: 35 },
+    { text: "Supercam",  weight: 20 },
+    { text: "суперкам",  weight: 10 }, // ← добавили
+    { text: "Розвід. дрон", weight: 20 },
+    { text: "supercam",  weight: 10 },
+    { text: "супер кам", weight: 5 }
+],
+
+
+    "ZZala.svg": [
+        { text: "ZALA", weight: 40 },
+        { text: "Zala", weight: 25 },
+        { text: "Зала", weight: 20 },
+        { text: "Розвід. дрон", weight: 10 },
+        { text: "зала", weight: 5 }
+    ],
+
+    "orlan.svg": [
+        { text: "Орлан-10", weight: 45 },
+        { text: "Розвід. дрон", weight: 25 },
+        { text: "орлан-10", weight: 15 },
+        { text: "орлан 10", weight: 15 }
+    ],
+
+    "bplaperexop.svg": [
+        { text: "БпЛА-перехоп.", weight: 50 },
+        { text: "БпЛА-Перехоп.", weight: 20 },
+        { text: "бпла-перехоп.", weight: 20 },
+        { text: "бпла-Перехоп.", weight: 10 }
+    ],
+
+    "kab.svg": [
+        { text: "КАБ", weight: 70 },
+        { text: "каб", weight: 20 },
+        { text: "КАб", weight: 10 }
+    ],
+
+    "vertolet.svg": [
+        { text: "Вертоліт", weight: 80 },
+        { text: "вертоліт", weight: 20 }
+    ],
+    "lancet.svg": [
+        { text: "Ланцет", weight: 80 },
+        { text: "ланцет", weight: 20 }
+    ],
+
+
+    // ===== ФИКС =====
+    "Su-35.svg": "Су-35",
+    "Su-34.svg": "Су-34",
+    "Su-30.svg": "Су-30",
+    "mig-29.svg": "МіГ-29",
+    "mig-31.svg": "МіГ-31",
+    "Su-57.svg": "Су-57",
+    "Tu-22M3.svg": "Ту-22М3",
+    "iskander.svg": "Ракета"
 };
-const objectType = ICON_TYPES[iconUrl] || "";
+
+function weightedRandom(list) {
+    const total = list.reduce((sum, i) => sum + i.weight, 0);
+    let r = Math.random() * total;
+
+    for (const item of list) {
+        if (r < item.weight) return item.text;
+        r -= item.weight;
+    }
+}
+let objectType = "";
+const typeData = ICON_TYPES[iconUrl];
+
+if (Array.isArray(typeData)) {
+    if (!marker._randomType) {
+        marker._randomType = weightedRandom(typeData);
+    }
+    objectType = marker._randomType;
+} else if (typeof typeData === "string") {
+    objectType = typeData;
+}
+
 
     // ==== Разворачиваем ====
     if (!marker._expanded) {
@@ -4269,8 +4607,6 @@ function calculateNewPosition(lat1, lon1, speedMps, deltaTime, lat2, lon2) {
         lon1 + (lon2 - lon1) * fraction
     ];
 }
-
-// ==== Модальное окно ====
 function openCoordsModal(callback) {
     const background = document.createElement('div');
     background.className = 'modal-background show';
@@ -4280,53 +4616,49 @@ function openCoordsModal(callback) {
     box.className = 'modal show coords-modal-top-left';
     box.innerHTML = `
         <h2>Выберите точки маршрута</h2>
-        <textarea id="coordsInput" placeholder="Кликай колёсиком по карте" style="width:100%; height:80px; font-size:7px; background:#1e232c; color:#fff; border:1px solid #3a4152; border-radius:4px; padding:3px;"></textarea>
+        <textarea id="coordsInput" placeholder="Тапай по карте"
+            style="width:100%;height:80px;font-size:10px;background:#1e232c;color:#fff;
+            border:1px solid #3a4152;border-radius:4px;padding:5px;"></textarea>
         <button id="coordsOk" class="modal-button">OK</button>
         <button id="coordsCancel" class="modal-button">Отмена</button>
     `;
     document.body.appendChild(box);
-
     box.style.top = '20px';
     box.style.left = '20px';
     box.style.transform = 'none';
 
-    let isDragging = false;
-    let offsetX, offsetY;
-    box.onmousedown = (e) => {
-        if (e.target.tagName === "TEXTAREA" || e.target.tagName === "BUTTON") return;
-        isDragging = true;
-        offsetX = e.clientX - box.offsetLeft;
-        offsetY = e.clientY - box.offsetTop;
-        document.onmousemove = (ev) => {
-            if (isDragging) {
-                box.style.left = ev.clientX - offsetX + "px";
-                box.style.top = ev.clientY - offsetY + "px";
-            }
-        };
-        document.onmouseup = () => {
-            isDragging = false;
-            document.onmousemove = null;
-            document.onmouseup = null;
-        };
-    };
-
+    // ===== маршрут =====
     const textarea = box.querySelector('#coordsInput');
+
     let tempWaypoints = [marker.getLatLng()];
-    let routeLine = L.polyline(tempWaypoints, { color: '#dd0347', weight: 1, opacity: 1 }).addTo(map);
+    let routeLine = L.polyline(tempWaypoints, {
+        color: '#dd0347',
+        weight: 2,
+        opacity: 1
+    }).addTo(map);
+
+    // ❗ флаг режима маршрута
+    let routeMode = true;
 
     const addCoord = (e) => {
-        if (e.originalEvent.button !== 1) return;
-        e.originalEvent.preventDefault();
-        const latlng = map.mouseEventToLatLng(e.originalEvent);
-        textarea.value += latlng.lat.toFixed(5) + "," + latlng.lng.toFixed(5) + "\n";
+        if (!routeMode) return;
+
+        const latlng = e.latlng;
+
+        textarea.value +=
+            latlng.lat.toFixed(5) + "," +
+            latlng.lng.toFixed(5) + "\n";
+
         tempWaypoints.push(latlng);
         routeLine.setLatLngs(tempWaypoints);
     };
 
-    map.on('mousedown', addCoord);
+    // ✅ работает и на ПК, и на планшете
+    map.on('click', addCoord);
 
     box.querySelector('#coordsOk').onclick = () => {
-        map.off('mousedown', addCoord);
+        routeMode = false;
+        map.off('click', addCoord);
         map.removeLayer(routeLine);
 
         const coordsText = textarea.value.trim();
@@ -4337,13 +4669,17 @@ function openCoordsModal(callback) {
     };
 
     box.querySelector('#coordsCancel').onclick = () => {
-        map.off('mousedown', addCoord);
+        routeMode = false;
+        map.off('click', addCoord);
         map.removeLayer(routeLine);
+
+        callback(null);
+
         document.body.removeChild(box);
         document.body.removeChild(background);
-        callback(null);
     };
 }
+
 
 // ==== Удаление маркера без удаления линии ====
 // ==== Клик по маркеру ====
@@ -4427,28 +4763,29 @@ let frontLayer = null;
 fetch("front.json")
   .then(response => response.json())
   .then(data => {
-    frontLayer = L.geoJSON(data, {
-        smoothFactor: 0,   // 🔥 КЛЮЧЕВО
-      style: function(feature) {
-        let color = '#bdbdbd';
-        let opacity = 1;
-        let fillOpacity = 1;
+frontLayer = L.geoJSON(data, {
+  smoothFactor: 0,
+  style: function(feature) {
+    let color = '#bdbdbd';
+    let opacity = 1;
+    let fillOpacity = 1;
 
-        if (feature.properties.name === 'Багатокутник 4') {
-          color = '#000000';
-          opacity = 1;
-          fillOpacity = 0.0;
-        }
+    if (feature.properties.name === 'Багатокутник 4') {
+      color = '#000000';
+      opacity = 1;
+      fillOpacity = 0.0;
+    }
 
-        return {
-          color: color,
-          weight: 1.5,
-          opacity: opacity,
-          fillColor: color,
-          fillOpacity: fillOpacity
-        };
-      }
-    }).addTo(map); // ← ИЗНАЧАЛЬНО ВКЛ
+    return {
+      color,
+      weight: 1.5,
+      opacity,
+      fillColor: color,
+      fillOpacity
+    };
+  }
+});
+    restoreFrontState();
   })
   .catch(error => console.error("Ошибка загрузки JSON:", error));
 
@@ -4482,6 +4819,7 @@ fetch('trevoga.json')
       if (isLugansk) {
 
 const layer = L.geoJSON(feature, {
+  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4524,6 +4862,7 @@ const layer = L.geoJSON(feature, {
           // загружаем Kyiv.json
           const kyivData = await fetch('Kyiv.json').then(r => r.json());
 const kyivLayer = L.geoJSON(kyivData, {
+  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4572,6 +4911,7 @@ const kyivLayer = L.geoJSON(kyivData, {
 
               if (districtCheckbox.checked) {
 const layer = L.geoJSON(featureData, {
+  pane: 'geoStaticPane',
   style: {
     color: 'red',
     fillColor: 'red',
@@ -4600,10 +4940,22 @@ const layer = L.geoJSON(featureData, {
   });
 
 // кнопка "Дать тревогу"
-document.getElementById('alert-button').onclick = function() {
-  menuVisible = !menuVisible;
-  document.getElementById('alert-menu').style.display = menuVisible ? 'block' : 'none';
-};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const signalBtn = document.getElementById('signal-button');
+  const alertMenu = document.getElementById('alert-menu');
+
+  let menuVisible = false;
+
+  signalBtn.onclick = function (e) {
+    e.stopPropagation();
+    menuVisible = !menuVisible;
+    alertMenu.style.display = menuVisible ? 'block' : 'none';
+  };
+});
+
+
+
         function getKievTime() {
     const options = {
         timeZone: 'Europe/Kiev',
@@ -4631,11 +4983,15 @@ function getNextObjectId() {
     `;
     return iconHTML;
 }
-let objectIdCounterBlue = '0250';
+let objectIdCounterBlue = 250;
 
 function getNextObjectIdBlue() {
   return objectIdCounterBlue++;
 }
+function formatId(id, digits = 4) {
+  return String(id).padStart(digits, '0');
+}
+
 let counterLitakId = 9900;
 function getNextLitakId() {
     return counterLitakId++;
@@ -4698,7 +5054,7 @@ zoomOutBtn.onclick = () => map.zoomOut();
   'style-pomelo':     [27, 27],
   'style-labrador':  [26, 26],
   'style-pol':       [30, 30],
-'style-labrador-vl':  [30, 30]
+'style-labrador-vl':  [29, 29]
 };
 
           const img = document.getElementById('toggleLayersImg');
@@ -4707,64 +5063,39 @@ zoomOutBtn.onclick = () => map.zoomOut();
   img.addEventListener('click', () => {
     layers.classList.toggle('active');
   });
+document.addEventListener('DOMContentLoaded', () => {
 const menu = document.getElementById('rightMenu');
-let mouseStartX = 0;
-let mouseStartY = 0;
-let isMouseSwiping = false;
+const alertBtn = document.getElementById('alert-button');
+const signalBtn = document.getElementById('signal-button');
+alertBtn.onclick = function (e) {
+  e.stopPropagation(); // важно
+  menu.classList.toggle('open');
+};
+document.addEventListener('click', e => {
+  if (!menu.classList.contains('open')) return;
 
-document.addEventListener('mousedown', e => {
-  // только ЛКМ
-  if (e.button !== 0) return;
-
-  mouseStartX = e.clientX;
-  mouseStartY = e.clientY;
-
-  // активируем только если старт у правого края
-  if (mouseStartX > window.innerWidth - 25) {
-    isMouseSwiping = true;
-  }
-});
-
-document.addEventListener('mouseup', e => {
-  if (!isMouseSwiping) return;
-
-  const dx = mouseStartX - e.clientX;
-  const dy = Math.abs(mouseStartY - e.clientY);
-
-  // свайп влево
-  if (dx > 80 && dy < 60) {
-    menu.classList.add('open');
-  }
-
-  isMouseSwiping = false;
-});
-let menuMouseStartX = 0;
-
-menu.addEventListener('mousedown', e => {
-  if (e.button !== 0) return;
-  menuMouseStartX = e.clientX;
-});
-
-menu.addEventListener('mouseup', e => {
-  const dx = e.clientX - menuMouseStartX;
-
-  // свайп вправо
-  if (dx > 80) {
+  if (!menu.contains(e.target) && !alertBtn.contains(e.target)) {
     menu.classList.remove('open');
   }
 });
 
-const toggle = document.getElementById('toggleFront');
+});
 
-toggle.addEventListener('change', () => {
+
+const toggleFront = document.getElementById('toggleFront');
+
+toggleFront.addEventListener('change', () => {
   if (!frontLayer) return;
 
-  if (toggle.checked) {
-    map.addLayer(frontLayer);
+  if (toggleFront.checked) {
+    frontLayer.addTo(map);
   } else {
     map.removeLayer(frontLayer);
   }
+
+  saveToggleState('toggleFront', toggleFront.checked);
 });
+
 const toggleAlerts = document.getElementById('toggleAlerts');
 
 toggleAlerts.addEventListener('change', () => {
@@ -4777,7 +5108,13 @@ toggleAlerts.addEventListener('change', () => {
     });
   });
 });
+toggleFront.addEventListener('change', () => {
+  // ТВОЯ логика
+  document.body.classList.toggle('show-front', toggleFront.checked);
 
+  // сохранение
+  saveToggleState('toggleFront', toggleFront.checked);
+});
 document.addEventListener('DOMContentLoaded', () => {
   const styleSelect = document.getElementById('styleSelect');
   const root = document.getElementById('map');
@@ -4821,6 +5158,7 @@ fetch('line.json')
   .then(res => res.json())
   .then(data => {
     frontLineLayer = L.geoJSON(data, {
+      pane: 'geoStaticPane',
       style: {
         color: 'red',
         weight: 1.5,
@@ -4834,7 +5172,7 @@ fetch('okkyp.json')
   .then(res => res.json())
   .then(data => {
     occLayer = L.geoJSON(data, {
-
+      pane: 'geoStaticPane',
       style: {
         stroke: false,
         fillColor: '#e6a57a',
@@ -4843,26 +5181,26 @@ fetch('okkyp.json')
     }).addTo(map);
   });
 
-  const toggleFrontLine = document.getElementById('toggleFrontLine');
+const toggleFrontLine = document.getElementById('toggleFrontLine');
 
-if (toggleFrontLine) {
-  toggleFrontLine.addEventListener('change', () => {
-    const visible = toggleFrontLine.checked;
+toggleFrontLine.addEventListener('change', () => {
+  const visible = toggleFrontLine.checked;
 
-    if (frontLineLayer) {
-      frontLineLayer.setStyle({
-        opacity: visible ? 1 : 0
-      });
-    }
+  if (frontLineLayer) {
+    frontLineLayer.setStyle({ opacity: visible ? 1 : 0 });
+  }
 
-    if (occLayer) {
-      occLayer.setStyle({
-        fillOpacity: visible ? 0.3 : 0
-      });
-    }
-  });
-}
+  if (occLayer) {
+    occLayer.setStyle({ fillOpacity: visible ? 0.3 : 0 });
+  }
+
+  document.body.classList.toggle('show-front-line', visible);
+
+  // 🔥 ВАЖНО
+  saveToggleState('toggleFrontLine', visible);
+});
 const toggleText = document.getElementById('toggleText');
+
 const mapRoot = document.getElementById('map');
 
 if (toggleText && mapRoot) {
@@ -4875,6 +5213,10 @@ if (toggleText && mapRoot) {
     mapRoot.classList.toggle('hide-text', !toggleText.checked);
   });
 }
+toggleText.addEventListener('change', () => {
+  document.body.classList.toggle('show-text', toggleText.checked);
+  saveToggleState('toggleText', toggleText.checked);
+});
 const toggleQuality = document.getElementById('toggleQuality');
 
 if (toggleQuality && mapRoot) {
@@ -4885,7 +5227,10 @@ if (toggleQuality && mapRoot) {
     );
   });
 }
-
+toggleQuality.addEventListener('change', () => {
+  document.body.classList.toggle('show-quality', toggleQuality.checked);
+  saveToggleState('toggleQuality', toggleQuality.checked);
+});
 document.addEventListener('DOMContentLoaded', () => {
   const styleSelect = document.getElementById('styleSelect');
   const root = document.getElementById('map');
@@ -4971,13 +5316,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
+  let currentLatLng = [50.433714918437474, 30.623164051610438];
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ===============================
      ПОЗИЦИЯ (Chel.png)
   =============================== */
+let ghostMarker = null;
+function showGhostMarker() {
+  if (ghostMarker) {
+    map.removeLayer(ghostMarker);
+    ghostMarker = null;
+  }
 
+  const ghostIcon = L.icon({
+    iconUrl: 'Chel2.png',
+    iconSize: [32, 32],
+    iconAnchor: [30, 28] // 👈 больше X = визуально влево
+  });
+
+  ghostMarker = L.marker(currentLatLng, {
+    icon: ghostIcon,
+    interactive: false
+  }).addTo(map);
+
+  setTimeout(() => {
+    if (ghostMarker) {
+      map.removeLayer(ghostMarker);
+      ghostMarker = null;
+    }
+  }, 8000); // 👈 18 секунд
+}
   const togglePosition = document.getElementById('togglePosition');
   if (!togglePosition) {
     console.warn('togglePosition not found');
@@ -4985,9 +5354,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let positionMarker = null;
+const INITIAL_POSITION_KEY = 'initialChelPosition';
+let initialLatLng = null;
 
   // стартовая позиция
-  let currentLatLng = [50.433714918437474, 30.623164051610438];
 
   function createPositionMarker() {
     const icon = L.icon({
@@ -5054,12 +5424,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
           positionMarker.setLatLng(currentLatLng);
           map.panTo(currentLatLng);
+updateRangeCircle();
+updateRangeAfterPositionChange();
+          
           positionMarker.closePopup();
         };
       }, 0);
     });
 
     positionMarker.addTo(map);
+    showGhostMarker();
   }
 
   togglePosition.addEventListener('change', () => {
@@ -5078,10 +5452,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (positionMarker) {
         map.removeLayer(positionMarker);
       }
+        updateRangeCircle(); // 👈 синхронизация
     }
   });
 
 });
+togglePosition.addEventListener('change', () => {
+  document.body.classList.toggle('show-position', togglePosition.checked);
+  saveToggleState('togglePosition', togglePosition.checked);
+});
+
 function updateMarkerIconSize(marker, styleClass) {
   const size = ICON_SIZES_BY_STYLE[styleClass];
   if (!size) return;
@@ -5209,7 +5589,7 @@ function restoreMarkerImage(marker) {
   }
 }
 function applyNeyst(marker) {
-  setMarkerImage(marker, 'neyst tip.png');
+  setMarkerImage(marker, 'neyst tip.svg');
 }
 
 
@@ -5233,7 +5613,7 @@ function showNeyst() {
       container && EXCLUDE.some(c => container.classList.contains(c));
 
     if (!excluded) {
-      img.src = 'neyst tip.png';
+      img.src = 'neyst tip.svg';
     }
   });
 }
@@ -5331,41 +5711,62 @@ window.matchMedia('(prefers-color-scheme: dark)')
 </script>
 <script>
 (function () {
-  const firstText = "Очікується повідомлення авторизації та зони видачі. Якщо цілі не з'являться протягом 5 хв — зверніться до підрозділу, який видає інформацію.";
-  const secondText = "Не було повідомлень протягом тривалого часу";
+  const firstText =
+    "Очікується повідомлення авторизації та зони видачі. Якщо цілі не з'являться протягом 5 хв — зверніться до підрозділу, який видає інформацію.";
+
+  const normalText =
+    "Не було повідомлень протягом тривалого часу";
+
+  const errorText =
+    "Помилка декодування повідомлення! Validation failed! Handler \"VMessageHandler\". Address '10.193.164.291:8712'";
+
+  const ERROR_CHANCE = 0.2; // ~20%
+  const ERROR_DURATION = 30 * 60 * 1000; // 30 минут
+  const CHECK_INTERVAL = 60 * 60 * 1000; // проверка раз в час
+
+  let errorTimeout = null;
+  let errorActive = false;
 
   function getEl() {
     return document.getElementById('warning-message');
   }
 
-  // 1️⃣ Сразу ставим первое сообщение
-  function setInitialText() {
+  function setText(text) {
     const el = getEl();
-    if (el) el.textContent = firstText;
+    if (el) {
+      el.textContent = text;
+      el.style.display = 'block';
+    }
   }
 
-  // 2️⃣ Через 10 сек меняем на второе
-  function switchToSecond() {
-    const el = getEl();
-    if (el) el.textContent = secondText;
+  function tryShowError() {
+    if (errorActive) return;
+
+    if (Math.random() < ERROR_CHANCE) {
+      errorActive = true;
+      setText(errorText);
+
+      errorTimeout = setTimeout(() => {
+        errorActive = false;
+        setText(normalText);
+      }, ERROR_DURATION);
+    }
   }
 
-  // 3️⃣ Старая "монетка" — случайно показывать или скрывать
-  function randomVisibility() {
-    const el = getEl();
-    if (!el) return;
+  // 1️⃣ старт
+  setText(firstText);
 
-    const show = Math.random() < 0.5;
-    el.style.display = show ? 'block' : 'none';
-  }
+  // 2️⃣ через 10 сек — обычное сообщение
+  setTimeout(() => {
+    setText(normalText);
+  }, 10000);
 
-  // Запуск логики
-  setInitialText();
-  setTimeout(switchToSecond, 10000);
-
-  // каждые 10 минут подбрасываем монетку
-  setInterval(randomVisibility, 10 * 60 * 1000);
+  // 3️⃣ раз в час пробуем показать ошибку
+  setInterval(() => {
+    tryShowError();
+  }, CHECK_INTERVAL);
 })();
+
 
 L.svg().addTo(map);
 d3.select(map.getPanes().overlayPane)
@@ -5505,6 +5906,13 @@ document.getElementById("toggleAirfields").addEventListener("change", function (
     item.g.style("display", this.checked ? "block" : "none");
   });
 });
+const toggleAirfields = document.getElementById('toggleAirfields');
+
+toggleAirfields.addEventListener('change', () => {
+  document.body.classList.toggle('show-airfields', toggleAirfields.checked);
+  saveToggleState('toggleAirfields', toggleAirfields.checked);
+});
+
   function updateFullscreenIcon() {
     const img = document.querySelector('#fullscreenBtn img');
     if (!img) return;
@@ -5566,7 +5974,13 @@ function updateAlertButton() {
 
 const checkbox = document.getElementById("forceTargetColors");
 const body = document.body;
-
+forceTargetColors.addEventListener('change', () => {
+  document.body.classList.toggle(
+    'force-target-colors',
+    forceTargetColors.checked
+  );
+  saveToggleState('forceTargetColors', forceTargetColors.checked);
+});
 /* стили, где цвет ВКЛ по умолчанию */
 const COLOR_STYLES = [
   "style-mariupol",
@@ -5784,7 +6198,7 @@ function drawAzimuthGrid(latlng, config) {
 
   if (azimuthLayer) map.removeLayer(azimuthLayer);
   azimuthLayer = L.layerGroup().addTo(map);
-
+azimuthLayer._isAzimuthLayer = true; // 🔥 МЕТКА
   const { radius, step, legend } = config;
 
   /* ===== ОКРУЖНОСТИ ===== */
@@ -5795,10 +6209,16 @@ function drawAzimuthGrid(latlng, config) {
     }
 const isOuter = r + step > radius;
 
-    L.polyline(pts, {
-      color: '#2f47ff',
-       weight: isOuter ? 2.5 : 1
-    }).addTo(azimuthLayer);
+const circle = L.polyline(pts, {
+  color: '#2f47ff',
+  weight: isOuter ? 2.5 : 1,
+  interactive: true,
+  bubblingMouseEvents: true
+});
+
+circle.on('click', handleAzimuthDelete);
+circle.addTo(azimuthLayer);
+
   }
 
   /* ===== ПОДПИСИ РАССТОЯНИЙ ===== */
@@ -5822,10 +6242,16 @@ const labelPoint = destinationPoint(center, 0, labelR);
   /* ===== ЛУЧИ И УГЛЫ ===== */
   for (let angle = 0; angle < 360; angle += 30) {
     const end = destinationPoint(center, angle, radius * (legend ? 1.05 : 1));
-    L.polyline([center, end], {
-      color: '#2f47ff',
-      weight: 1
-    }).addTo(azimuthLayer);
+const ray = L.polyline([center, end], {
+  color: '#2f47ff',
+  weight: 1,
+  interactive: true,
+  bubblingMouseEvents: true
+});
+
+ray.on('click', handleAzimuthDelete);
+ray.addTo(azimuthLayer);
+
 
     if (legend) {
       const labelPoint = destinationPoint(center, angle, radius * 1.08);
@@ -5857,8 +6283,372 @@ function destinationPoint(center, bearingDeg, distanceKm) {
   );
 
   return L.latLng(lat2 * 180 / Math.PI, lon2 * 180 / Math.PI);
+}function handleAzimuthDelete(e) {
+  if (!deleteMode) return;
+
+  e.originalEvent.stopPropagation();
+  e.originalEvent.preventDefault();
+
+  // удалить SVG подписи
+  azimuthSvgLabels.forEach(i => i.el.remove());
+  azimuthSvgLabels.length = 0;
+
+  azimuthDistanceLabels.forEach(i => i.el.remove());
+  azimuthDistanceLabels.length = 0;
+
+  // удалить слой
+  if (azimuthLayer) {
+    map.removeLayer(azimuthLayer);
+    azimuthLayer = null;
+  }
+
+  // выйти из deleteMode — как у маркеров
+  deleteMode = false;
+  const deleteButton = document.getElementById('deleteButton');
+  if (deleteButton) {
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+    deleteButton.style.color = 'gray';
+  }
 }
 
+
+const darkToggle     = document.getElementById('darkMapToggle');
+const contrastSlider = document.getElementById('contrastSlider');
+
+function updateContrastState() {
+  document.body.classList.toggle(
+    'contrast-disabled',
+    !darkToggle.checked
+  );
+}
+
+// при клике
+darkToggle.addEventListener('change', updateContrastState);
+
+// при загрузке
+updateContrastState();
+
+const contrastValue  = document.getElementById('contrastValue');
+function visualToReal(v) {
+  return (1 + (Number(v) - 1) * (2 / 14)).toFixed(2);
+}
+
+function realToVisual(r) {
+  return Math.round((Number(r) - 1) / (2 / 14)) + 1;
+}
+
+function applyFromVisual(v) {
+  const real = visualToReal(v);
+  document.documentElement.style.setProperty('--map-contrast', real);
+  contrastValue.textContent = v; // показываем целое
+}
+
+
+// тумблер
+darkToggle.addEventListener('change', () => {
+  const on = darkToggle.checked;
+  document.body.classList.toggle('dark-map', on);
+  contrastSlider.disabled = !on;
+});
+
+// живое обновление
+contrastSlider.addEventListener('input', () => {
+  applyFromVisual(contrastSlider.value);
+});
+function setBaseLayer(layer) {
+  if (currentBaseLayer) {
+    map.removeLayer(currentBaseLayer);
+  }
+
+  currentBaseLayer = layer;
+  map.addLayer(currentBaseLayer);
+}
+const terrainToggle = document.getElementById('terrainToggle');
+const hybridToggle  = document.getElementById('hybridToggle');
+
+let lastActive = 'osm';
+function updateBaseLayer() {
+  // если оба включены — приоритет у последнего
+  if (terrainToggle.checked && hybridToggle.checked) {
+    setBaseLayer(MAP_LAYERS[lastActive]);
+    return;
+  }
+
+  // если включена только топографическая
+  if (terrainToggle.checked) {
+    lastActive = 'googleTerrain';
+    setBaseLayer(MAP_LAYERS.googleTerrain);
+    return;
+  }
+
+  // если включена только спутниковая
+  if (hybridToggle.checked) {
+    lastActive = 'googleHybrid';
+    setBaseLayer(MAP_LAYERS.googleHybrid);
+    return;
+  }
+
+  // если всё выключено
+  lastActive = 'osm';
+  setBaseLayer(MAP_LAYERS.osm);
+}
+terrainToggle.addEventListener('change', () => {
+  if (terrainToggle.checked) {
+    lastActive = 'googleTerrain';
+  }
+  updateBaseLayer();
+});
+
+hybridToggle.addEventListener('change', () => {
+  if (hybridToggle.checked) {
+    lastActive = 'googleHybrid';
+  }
+  updateBaseLayer();
+});
+
+function saveState() {
+  localStorage.setItem('terrain', terrainToggle.checked ? '1' : '0');
+  localStorage.setItem('hybrid', hybridToggle.checked ? '1' : '0');
+  localStorage.setItem('lastActive', lastActive);
+}
+
+function loadState() {
+  terrainToggle.checked = localStorage.getItem('terrain') === '1';
+  hybridToggle.checked  = localStorage.getItem('hybrid') === '1';
+  lastActive = localStorage.getItem('lastActive') || 'osm';
+  updateBaseLayer();
+}
+
+terrainToggle.addEventListener('change', saveState);
+hybridToggle.addEventListener('change', saveState);
+
+loadState();
+// загрузка
+const savedMap = localStorage.getItem('baseMap') || 'osm';
+
+if (savedMap === 'googleTerrain') {
+  terrainToggle.checked = true;
+  setBaseLayer(MAP_LAYERS.googleTerrain);
+}
+
+if (savedMap === 'googleHybrid') {
+  hybridToggle.checked = true;
+  setBaseLayer(MAP_LAYERS.googleHybrid);
+}
+
+// сохранение
+terrainToggle.addEventListener('change', () => {
+  if (terrainToggle.checked) {
+    localStorage.setItem('baseMap', 'googleTerrain');
+  } else if (!hybridToggle.checked) {
+    localStorage.setItem('baseMap', 'osm');
+  }
+});
+
+hybridToggle.addEventListener('change', () => {
+  if (hybridToggle.checked) {
+    localStorage.setItem('baseMap', 'googleHybrid');
+  } else if (!terrainToggle.checked) {
+    localStorage.setItem('baseMap', 'osm');
+  }
+});
+darkToggle.addEventListener('change', () => {
+  const on = darkToggle.checked;
+
+  document.body.classList.toggle('dark-map', on);
+  document.body.classList.toggle('contrast-disabled', !on);
+
+  localStorage.setItem('darkMap', on ? '1' : '0');
+});
+contrastSlider.addEventListener('change', () => {
+  localStorage.setItem(
+    'mapContrast',
+    visualToReal(contrastSlider.value)
+  );
+});
+function restoreMapStyleState() {
+  // 1. темна мапа
+  const darkOn = localStorage.getItem('darkMap') === '1';
+  darkToggle.checked = darkOn;
+
+  document.body.classList.toggle('dark-map', darkOn);
+  document.body.classList.toggle('contrast-disabled', !darkOn);
+
+  // 2. контраст
+  const savedContrast = localStorage.getItem('mapContrast');
+
+  if (savedContrast) {
+    const visual = realToVisual(savedContrast);
+    contrastSlider.value = visual;
+
+    // ⚠️ применяем ВСЕГДА, даже если dark OFF
+    document.documentElement.style.setProperty(
+      '--map-contrast',
+      savedContrast
+    );
+  }
+}
+// после DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  restoreMapStyleState();
+});
+const toggleIds = [
+  'toggleFront',
+  'toggleAlerts',
+  'toggleFrontLine',
+  'toggleText',
+  'toggleQuality',
+  'togglePosition',
+  'toggleAirfields',
+  'forceTargetColors'
+];
+function saveToggleState(id, checked) {
+  localStorage.setItem(id, checked ? '1' : '0');
+}
+function restoreToggles() {
+  toggleIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const saved = localStorage.getItem(id);
+    if (saved !== null) {
+      el.checked = saved === '1';
+    }
+
+    // 🔥 ВАЖНО: имитируем change
+    el.dispatchEvent(new Event('change'));
+  });
+}
+function saveToggleState(id, checked) {
+  localStorage.setItem(id, checked ? '1' : '0');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  [
+    'toggleFront',
+    'toggleAlerts',
+    'toggleFrontLine',
+    'toggleText',
+    'toggleQuality',
+    'togglePosition',
+    'toggleAirfields',
+    'forceTargetColors'
+  ].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const saved = localStorage.getItem(id);
+    if (saved !== null) {
+      el.checked = saved === '1';
+    }
+
+    // 🔥 применяем логику
+    el.dispatchEvent(new Event('change'));
+  });
+});
+function restoreFrontState() {
+  const saved = localStorage.getItem('toggleFront');
+  const enabled = saved === null ? true : saved === '1';
+
+  toggleFront.checked = enabled;
+
+  if (!frontLayer) return;
+
+  if (enabled) {
+    frontLayer.addTo(map);
+  } else {
+    map.removeLayer(frontLayer);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleRange = document.getElementById('toggleRange');
+  if (!toggleRange) {
+    console.warn('toggleRange not found');
+    return;
+  }
+
+  const STORAGE_RANGE_KEY = 'toggleRange';
+  const RANGE_RADIUS = 1500000; // 1500 км
+
+  let rangeCircle = null;
+
+  // 🔹 восстановление состояния
+  const savedRangeState = localStorage.getItem(STORAGE_RANGE_KEY);
+  toggleRange.checked = savedRangeState === 'true';
+
+  // 🔹 функция обновления круга
+  function updateRangeCircle() {
+    if (!toggleRange.checked) return;
+    if (!map || !currentLatLng) return;
+
+    if (!rangeCircle) {
+      rangeCircle = L.circle(currentLatLng, {
+        radius: RANGE_RADIUS,
+        color: '#2f80ff',
+        weight: 1.5,
+        opacity: 0.6,
+        fillColor: '#2f80ff',
+        fillOpacity: 0.02
+      }).addTo(map);
+    } else {
+      rangeCircle.setLatLng(currentLatLng);
+    }
+  }
+
+  // 🔹 применяем состояние при старте
+  if (toggleRange.checked) {
+    updateRangeCircle();
+  }
+
+  // 🔹 обработчик галочки
+  toggleRange.addEventListener('change', () => {
+    localStorage.setItem(STORAGE_RANGE_KEY, toggleRange.checked);
+
+    if (toggleRange.checked) {
+      updateRangeCircle();
+    } else {
+      if (rangeCircle) {
+        map.removeLayer(rangeCircle);
+        rangeCircle = null;
+      }
+    }
+  });
+
+  // 🔹 если позиция меняется где-то ещё — дергай это
+  window.updateRangeAfterPositionChange = function () {
+    if (rangeCircle) {
+      rangeCircle.setLatLng(currentLatLng);
+    }
+  };
+});
+
+function isInsideRange(latlng) {
+  if (!map || !currentLatLng) return false;
+
+  const RANGE_RADIUS = 1500000; // 1500 км
+  const distance = map.distance(latlng, currentLatLng);
+
+  return distance <= RANGE_RADIUS;
+}
+
+function loadInitialPosition() {
+  const saved = localStorage.getItem(INITIAL_POSITION_KEY);
+  if (saved) {
+    try {
+      initialLatLng = JSON.parse(saved);
+    } catch {
+      initialLatLng = null;
+    }
+  }
+}
+
+function saveInitialPosition(latlng) {
+  if (!localStorage.getItem(INITIAL_POSITION_KEY)) {
+    localStorage.setItem(INITIAL_POSITION_KEY, JSON.stringify(latlng));
+    initialLatLng = latlng;
+  }
+}
+loadInitialPosition();
 
 </script>
 
